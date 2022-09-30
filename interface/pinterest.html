@@ -1,0 +1,345 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static './Bootstrap/css/bootstrap.min.css'%}">
+  <link rel="stylesheet" href="{% static './CSS/pinterest.css'%}">
+  <title>Document</title>
+</head>
+<body>
+  <div class="header position-fixed" style="z-index: 1;">
+    <div class="logo">
+      <a href="#" class="link-logo" target="_blank" rel="noopener noreferrer">
+        <svg style="fill: #e60023;;" height="32" width="32" viewBox="0 0 24 24" aria-label="Pinterest" role="img"><path d="M0 12c0 5.123 3.211 9.497 7.73 11.218-.11-.937-.227-2.482.025-3.566.217-.932 1.401-5.938 1.401-5.938s-.357-.715-.357-1.774c0-1.66.962-2.9 2.161-2.9 1.02 0 1.512.765 1.512 1.682 0 1.025-.653 2.557-.99 3.978-.281 1.189.597 2.159 1.769 2.159 2.123 0 3.756-2.239 3.756-5.471 0-2.861-2.056-4.86-4.991-4.86-3.398 0-5.393 2.549-5.393 5.184 0 1.027.395 2.127.889 2.726a.36.36 0 0 1 .083.343c-.091.378-.293 1.189-.332 1.355-.053.218-.173.265-.4.159-1.492-.694-2.424-2.875-2.424-4.627 0-3.769 2.737-7.229 7.892-7.229 4.144 0 7.365 2.953 7.365 6.899 0 4.117-2.595 7.431-6.199 7.431-1.211 0-2.348-.63-2.738-1.373 0 0-.599 2.282-.744 2.84-.282 1.084-1.064 2.456-1.549 3.235C9.584 23.815 10.77 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0 0 5.373 0 12"></path></svg>
+        <span class="ms-2 span-logo">Pinterest</span>
+      </a>
+    </div>
+    <div class="about">
+      <div class="me-4 about">
+        <div class="item_header">About</div>
+        <div class="item_header">Business</div>
+        <div class="item_header">Blog</div>
+      </div>
+      <div class="position-relative">
+        <button type="button" class="btn-pinterest me-3" data-bs-toggle="modal" data-bs-target="#loginModal">Log in</button>
+        <div class="modal fade" id="loginModal"  data-backdrop="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="position-relative" style="pointer-events: auto;">
+              <div class="form-login">
+                <div class="padding-login">
+                  <div class="logo-form"><svg height="40" style="display: block;" viewBox="-3 -3 82 82" width="40"><title>Pinterest logo</title><circle cx="38" cy="38" fill="white" r="40"></circle><path d="M27.5 71c3.3 1 6.7 1.6 10.3 1.6C57 72.6 72.6 57 72.6 37.8 72.6 18.6 57 3 37.8 3 18.6 3 3 18.6 3 37.8c0 14.8 9.3 27.5 22.4 32.5-.3-2.7-.6-7.2 0-10.3l4-17.2s-1-2-1-5.2c0-4.8 3-8.4 6.4-8.4 3 0 4.4 2.2 4.4 5 0 3-2 7.3-3 11.4C35.6 49 38 52 41.5 52c6.2 0 11-6.6 11-16 0-8.3-6-14-14.6-14-9.8 0-15.6 7.3-15.6 15 0 3 1 6 2.6 8 .3.2.3.5.2 1l-1 3.8c0 .6-.4.8-1 .4-4.4-2-7-8.3-7-13.4 0-11 7.8-21 22.8-21 12 0 21.3 8.6 21.3 20 0 12-7.4 21.6-18 21.6-3.4 0-6.7-1.8-7.8-4L32 61.7c-.8 3-3 7-4.5 9.4z" fill="#e60023" fill-rule="evenodd"></path></svg></div>
+                  <div class="text-center welcome">
+                    <h1>
+                      Welcome to Pinterest
+                    </h1>
+                  </div> 
+                  <div class="m-auto mt-5">
+                    <div class="width-form__login">
+                      <div class="m-0 w-100">
+                        <form action="" class="register-form">
+                          <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email</label>
+                            <input type="email" placeholder="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputPass1" class="form-label">Password</label>
+                            <input type="email" placeholder="Email" class="form-control" id="exampleInputPass1" aria-describedby="passHelp">
+                          </div>
+                          <div class="btn-register">Log in</div>
+                        </form>
+                        <h3 class="option-login text-center">Or</h3>
+                        <button class="btn-fb bg-blue px-4 mb-2">
+                          <div class="d-flex justify-content-between">
+                            <div class="svg-btn d-inline"><svg style="fill: #fff;" height="19" width="19" viewBox="0 0 24 24" aria-label="facebook" role="img"><path d="m17.75 3.984-2.312.001c-1.811 0-2.163.842-2.163 2.077v2.724h4.323l-.563 4.267h-3.76V24H8.769V13.053H5V8.786h3.769V5.64C8.769 1.988 11.05 0 14.383 0c1.596 0 2.967.116 3.367.168v3.816z"></path></svg></div>
+                            <span style="color: #fff;font-size: 16px;
+                            font-weight: 500;">
+                              Continue with Facebook
+                            </span>
+                          </div>
+                        </button>
+                        <button class="btn-fb px-4">
+                          <div class="d-flex justify-content-between">
+                            <div class="svg-btn d-inline"><svg version="1.1" height="19" width="19" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="LgbsSe-Bz112c"><g><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path><path fill="none" d="M0 0h48v48H0z"></path></g></svg></div>
+                            <span>
+                              Tiếp tục truy cập Google
+                            </span>
+                          </div>
+                        </button>
+                        <div class="term text-center mt-3">
+                          <span>By continuing, you agree to Pinterest's </span>
+                          <span class="text-bold">Terms of Service</span> and acknowledge you've read our <br>
+                          <a href="" class="text-bold">Privacy Policy</a>
+                          <div class="mt-4">
+                            <a href="" class="text-bold" data-bs-toggle="modal" data-bs-target="#signupModal">Not on Pinterest yet? Sign up</a>
+                          </div>
+                          <div class="mt-4 mb-2">
+                            <span>Are you a business?
+                              Get started here!</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="position-relative">
+        <button type="button" class="btn-pinterest bg-gray" data-bs-toggle="modal" data-bs-target="#signupModal">Sign up</button>
+        <div class="modal fade" id="signupModal"  data-backdrop="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="position-relative" style="pointer-events: auto;">
+              <div class="form-login">
+                <div class="padding-login">
+                  <div class="logo-form"><svg height="40" style="display: block;" viewBox="-3 -3 82 82" width="40"><title>Pinterest logo</title><circle cx="38" cy="38" fill="white" r="40"></circle><path d="M27.5 71c3.3 1 6.7 1.6 10.3 1.6C57 72.6 72.6 57 72.6 37.8 72.6 18.6 57 3 37.8 3 18.6 3 3 18.6 3 37.8c0 14.8 9.3 27.5 22.4 32.5-.3-2.7-.6-7.2 0-10.3l4-17.2s-1-2-1-5.2c0-4.8 3-8.4 6.4-8.4 3 0 4.4 2.2 4.4 5 0 3-2 7.3-3 11.4C35.6 49 38 52 41.5 52c6.2 0 11-6.6 11-16 0-8.3-6-14-14.6-14-9.8 0-15.6 7.3-15.6 15 0 3 1 6 2.6 8 .3.2.3.5.2 1l-1 3.8c0 .6-.4.8-1 .4-4.4-2-7-8.3-7-13.4 0-11 7.8-21 22.8-21 12 0 21.3 8.6 21.3 20 0 12-7.4 21.6-18 21.6-3.4 0-6.7-1.8-7.8-4L32 61.7c-.8 3-3 7-4.5 9.4z" fill="#e60023" fill-rule="evenodd"></path></svg></div>
+                  <div class="text-center welcome">
+                    <h1>
+                      Welcome to Pinterest
+                    </h1>
+                  </div>
+                  <div class="ideas-try text-center">
+                    <span>Find new ideas to try</span>
+                  </div>
+                  <div class="m-auto">
+                    <div class="width-form__login">
+                      <div class="m-0 w-100">
+                        <form action="" class="register-form">
+                          <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email</label>
+                            <input type="email" placeholder="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputPass1" class="form-label">Password</label>
+                            <input type="email" placeholder="Email" class="form-control" id="exampleInputPass1" aria-describedby="passHelp">
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputAge1" class="form-label">Age</label>
+                            <input type="email" placeholder="Email" class="form-control" id="exampleInputAge1" aria-describedby="ageHelp">
+                          </div>
+                          <div class="btn-register">Continue</div>
+                        </form>
+                        <h3 class="option-login text-center">Or</h3>
+                        <button class="btn-fb bg-blue px-4 mb-2">
+                          <div class="d-flex justify-content-between">
+                            <div class="svg-btn d-inline"><svg style="fill: #fff;" height="19" width="19" viewBox="0 0 24 24" aria-label="facebook" role="img"><path d="m17.75 3.984-2.312.001c-1.811 0-2.163.842-2.163 2.077v2.724h4.323l-.563 4.267h-3.76V24H8.769V13.053H5V8.786h3.769V5.64C8.769 1.988 11.05 0 14.383 0c1.596 0 2.967.116 3.367.168v3.816z"></path></svg></div>
+                            <span style="color: #fff;font-size: 16px;
+                            font-weight: 500;">
+                              Continue with Facebook
+                            </span>
+                          </div>
+                        </button>
+                        <button class="btn-fb px-4">
+                          <div class="d-flex justify-content-between">
+                            <div class="svg-btn d-inline"><svg version="1.1" height="19" width="19" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="LgbsSe-Bz112c"><g><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path><path fill="none" d="M0 0h48v48H0z"></path></g></svg></div>
+                            <span>
+                              Tiếp tục truy cập Google
+                            </span>
+                          </div>
+                        </button>
+                        <div class="term text-center mt-3">
+                          <span>By continuing, you agree to Pinterest's </span>
+                          <span class="text-bold">Terms of Service</span> and acknowledge you've read our <br>
+                          <a href="" class="text-bold">Privacy Policy</a>
+                          <div class="mt-4">
+                            <a href="" class="text-bold" data-bs-toggle="modal" data-bs-target="#loginModal">Already a member? Log in</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="business">
+                  <span style="font-size: 16px; font-weight: 600;">Create a free business account</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <main id="main">
+    <div class="full-page">
+      <section id="sec1" class="hero section get-your-next position-relative">
+        <div class="mb-4 width-title">
+          <h1 class="get text-center">Get your next</h1>
+          <h3 class="title-content text-center">game thumb idea</h3>
+        </div>
+        <button class="scroll-bottom"><svg style="fill: #fff;" height="20" width="20" viewBox="0 0 24 24" aria-label="Scroll down" role="img"><path d="M12 19.5.66 8.29c-.88-.86-.88-2.27 0-3.14.88-.87 2.3-.87 3.18 0L12 13.21l8.16-8.06c.88-.87 2.3-.87 3.18 0 .88.87.88 2.28 0 3.14L12 19.5z"></path></svg></button>
+      </section>
+      <section id="sec2" class="hero section an-idea" style="background-color: rgb(255, 253, 146);">
+        <div class="table-content">
+          <div class="d-flex justify-content-center align-items-center m-0 w-100 h-100">
+            <div class="an-left col-lg-6">
+              <div class="wrapper-img">
+                <img src="{% static './SVG/section2.png'%}" alt="">
+              </div>
+            </div>
+            <div class="an-right col-lg-6">
+              <div class="content-right">
+                <div class="search">Search for an idea</div>
+                <div class="what-do">What do you want to try next? Think of something you’re into—like “easy chicken dinner”—and see what you find.</div>
+                <button class="btn-pinterest btn-red mt-3 fw-bold">Explore</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="sec3" class="hero section an-idea" style="background-color: rgb(218, 255, 246);">
+        <div class="table-content">
+          <div class="d-flex justify-content-center flex-row-reverse align-items-center m-0 w-100 h-100">
+            <div class="an-left col-lg-6 justify-content-start">
+              <div class="wrapper-img">
+                <img src="{% static './SVG/section3.png'%}" alt="">
+              </div>
+            </div>
+            <div class="an-right col-lg-6">
+              <div class="content-right">
+                <div class="search" style="color: rgb(0, 107, 108);">Save ideas you like</div>
+                <div class="what-do" style="color: rgb(0, 107, 108);">Collect your favorites so you can get back to them later.</div>
+                <button class="btn-pinterest btn-green mt-3 fw-bold">Explore</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="sec4" class="hero section an-idea" style="background-color: rgb(255, 226, 235);">
+        <div class="table-content">
+          <div class="d-flex justify-content-center align-items-center m-0 w-100 h-100">
+            <div class="an-left col-lg-6 section-3 h-100">
+              
+            </div>
+            <div class="an-right col-lg-6">
+              <div class="content-right">
+                <div class="search text-center" style="color: rgb(195, 47, 0); width: 450px;">See it, make it, try it, do it</div>
+                <div class="what-do" style="color: rgb(195, 47, 0);">The best part of Pinterest is discovering new things and ideas from people around the world.</div>
+                <button class="btn-pinterest btn-red mt-3 fw-bold" style="background: rgb(195, 47, 0);
+                color: rgb(255, 223, 233);">Explore</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="sec5" class="hero section login-now position-relative" style="background-color: #fff;">
+        <div class="bg-section__login"></div>
+        <div class="grid-login">
+          <div class="row h-100">
+            <div class="col-lg-6">
+              <div class="d-flex flex-column justify-content-center align-items-center h-100">
+                <div class="max-title">
+                  <h1 class="sign-title">Sign up to get your ideas</h1>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="w-100 h-100 d-flex justify-content-center align-items-center m-0">
+                <div class="form-login">
+                  <div class="padding-login">
+                    <div class="logo-form"><svg height="40" style="display: block;" viewBox="-3 -3 82 82" width="40"><title>Pinterest logo</title><circle cx="38" cy="38" fill="white" r="40"></circle><path d="M27.5 71c3.3 1 6.7 1.6 10.3 1.6C57 72.6 72.6 57 72.6 37.8 72.6 18.6 57 3 37.8 3 18.6 3 3 18.6 3 37.8c0 14.8 9.3 27.5 22.4 32.5-.3-2.7-.6-7.2 0-10.3l4-17.2s-1-2-1-5.2c0-4.8 3-8.4 6.4-8.4 3 0 4.4 2.2 4.4 5 0 3-2 7.3-3 11.4C35.6 49 38 52 41.5 52c6.2 0 11-6.6 11-16 0-8.3-6-14-14.6-14-9.8 0-15.6 7.3-15.6 15 0 3 1 6 2.6 8 .3.2.3.5.2 1l-1 3.8c0 .6-.4.8-1 .4-4.4-2-7-8.3-7-13.4 0-11 7.8-21 22.8-21 12 0 21.3 8.6 21.3 20 0 12-7.4 21.6-18 21.6-3.4 0-6.7-1.8-7.8-4L32 61.7c-.8 3-3 7-4.5 9.4z" fill="#e60023" fill-rule="evenodd"></path></svg></div>
+                    <div class="text-center welcome">
+                      <h1>
+                        Welcome to Pinterest
+                      </h1>
+                    </div>
+                    <div class="ideas-try text-center">
+                      <span>Find new ideas to try</span>
+                    </div>
+                    <div class="m-auto">
+                      <div class="width-form__login">
+                        <div class="m-0 w-100">
+                          <form action="" class="register-form">
+                            <div class="mb-3">
+                              <label for="exampleInputEmail1" class="form-label">Email</label>
+                              <input type="email" placeholder="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
+                            <div class="mb-3">
+                              <label for="exampleInputPass1" class="form-label">Password</label>
+                              <input type="email" placeholder="Email" class="form-control" id="exampleInputPass1" aria-describedby="passHelp">
+                            </div>
+                            <div class="mb-3">
+                              <label for="exampleInputAge1" class="form-label">Age</label>
+                              <input type="email" placeholder="Email" class="form-control" id="exampleInputAge1" aria-describedby="ageHelp">
+                            </div>
+                            <div class="btn-register">Continue</div>
+                          </form>
+                          <h3 class="option-login text-center">Or</h3>
+                          <button class="btn-fb bg-blue px-4 mb-2">
+                            <div class="d-flex justify-content-between">
+                              <div class="svg-btn d-inline"><svg style="fill: #fff;" height="19" width="19" viewBox="0 0 24 24" aria-label="facebook" role="img"><path d="m17.75 3.984-2.312.001c-1.811 0-2.163.842-2.163 2.077v2.724h4.323l-.563 4.267h-3.76V24H8.769V13.053H5V8.786h3.769V5.64C8.769 1.988 11.05 0 14.383 0c1.596 0 2.967.116 3.367.168v3.816z"></path></svg></div>
+                              <span style="color: #fff;font-size: 16px;
+                              font-weight: 500;">
+                                Continue with Facebook
+                              </span>
+                            </div>
+                          </button>
+                          <button class="btn-fb px-4">
+                            <div class="d-flex justify-content-between">
+                              <div class="svg-btn d-inline"><svg version="1.1" height="19" width="19" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="LgbsSe-Bz112c"><g><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path><path fill="none" d="M0 0h48v48H0z"></path></g></svg></div>
+                              <span>
+                                Tiếp tục truy cập Google
+                              </span>
+                            </div>
+                          </button>
+                          <div class="term text-center mt-3">
+                            <span>By continuing, you agree to Pinterest's </span>
+                            <span class="text-bold">Terms of Service</span> and acknowledge you've read our <br>
+                            <a href="" class="text-bold">Privacy Policy</a>
+                            <div class="mt-4">
+                              <a href="" class="text-bold">Already a member? Log in</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="business">
+                    <span style="font-size: 16px; font-weight: 600;">Create a free business account</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="{% static './Bootstrap/js/bootstrap.min.js'%}"></script>
+  <script>
+  $(document).ready(function() {
+    var delay = false;
+    var currentPage = 1;
+    var pageCount = $(".section").length;
+    var swipe = document.getElementsByTagName('.section');
+
+    $(document).on('mousewheel DOMMouseScroll', function(event) {
+      event.preventDefault();
+
+      var wd = event.originalEvent.wheelDelta || -event.originalEvent.detail;
+      console.log(wd);
+
+      if (wd < 0) {
+        if (currentPage < pageCount) {
+          currentPage++;
+        }
+      } else {
+        if (1 < currentPage) {
+          currentPage--;
+        }
+      }
+  
+      $('html,body').animate({
+        scrollTop: $('#sec' + currentPage).offset().top
+      }, 500, 'swing');
+    });
+  });  
+  </script>
+</body>
+</html>
