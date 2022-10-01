@@ -39,17 +39,38 @@
                   </div> 
                   <div class="m-auto mt-5">
                     <div class="width-form__login">
+
+                      {% if messages %}
+                        {% for message in messages %}
+
+                          {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+                          <div {% if message.info %} class="{{ message.info }}"{% endif %} class="alert alert-danger text-center px-4" role="alert">
+                            {{message}}
+                          </div>
+                          {% endif %}
+
+                          
+                          {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                          <div {% if message.success %} class="{{ message.success }}"{% endif %} class="alert alert-success text-center px-4" role="alert">
+                            {{message}}
+                          </div>
+                          {% endif %}
+
+                        {% endfor %}
+                      {% endif %}
+
                       <div class="m-0 w-100">
-                        <form action="" class="register-form">
+                        <form action="" method="post" class="register-form">
+                          {% csrf_token %}
                           <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Email</label>
-                            <input type="email" placeholder="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <input name="emailModal" type="text" placeholder="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                           </div>
                           <div class="mb-3">
                             <label for="exampleInputPass1" class="form-label">Password</label>
-                            <input type="email" placeholder="Email" class="form-control" id="exampleInputPass1" aria-describedby="passHelp">
+                            <input name="passModal" type="password" placeholder="Password" class="form-control" id="exampleInputPass1" aria-describedby="passHelp">
                           </div>
-                          <div class="btn-register">Log in</div>
+                          <button type="submit" name="loginModal" class="btn-register">Log in</button>
                         </form>
                         <h3 class="option-login text-center">Or</h3>
                         <button class="btn-fb bg-blue px-4 mb-2">
@@ -108,21 +129,42 @@
                   </div>
                   <div class="m-auto">
                     <div class="width-form__login">
+
+                      {% if messages %}
+                        {% for message in messages %}
+
+                          {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+                          <div {% if message.info %} class="{{ message.info }}"{% endif %} class="alert alert-danger text-center px-4" role="alert">
+                            {{message}}
+                          </div>
+                          {% endif %}
+
+                          
+                          {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                          <div {% if message.success %} class="{{ message.success }}"{% endif %} class="alert alert-success text-center px-4" role="alert">
+                            {{message}}
+                          </div>
+                          {% endif %}
+
+                        {% endfor %}
+                      {% endif %}
+
                       <div class="m-0 w-100">
-                        <form action="" class="register-form">
+                        <form action="" method="post" class="register-form">
+                          {% csrf_token %}
                           <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Email</label>
-                            <input type="email" placeholder="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <input name="email_signup" type="email" placeholder="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputAge1" class="form-label">Username</label>
+                            <input name="user_signup" type="text" placeholder="Username" class="form-control" id="exampleInputAge1" aria-describedby="ageHelp">
                           </div>
                           <div class="mb-3">
                             <label for="exampleInputPass1" class="form-label">Password</label>
-                            <input type="email" placeholder="Email" class="form-control" id="exampleInputPass1" aria-describedby="passHelp">
+                            <input name="pass_signup" type="password" placeholder="Password" class="form-control" id="exampleInputPass1" aria-describedby="passHelp">
                           </div>
-                          <div class="mb-3">
-                            <label for="exampleInputAge1" class="form-label">Age</label>
-                            <input type="email" placeholder="Email" class="form-control" id="exampleInputAge1" aria-describedby="ageHelp">
-                          </div>
-                          <div class="btn-register">Continue</div>
+                          <button type="submit" name="signup_modal" class="btn-register">Continue</button>
                         </form>
                         <h3 class="option-login text-center">Or</h3>
                         <button class="btn-fb bg-blue px-4 mb-2">
@@ -252,22 +294,45 @@
                     </div>
                     <div class="m-auto">
                       <div class="width-form__login">
+
+                        {% if messages %}
+                          {% for message in messages %}
+
+                            {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+                            <div {% if message.info %} class="{{ message.info }}"{% endif %} class="alert alert-danger text-center px-4" role="alert">
+                              {{message}}
+                            </div>
+                            {% endif %}
+
+                            
+                            {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                            <div {% if message.success %} class="{{ message.success }}"{% endif %} class="alert alert-success text-center px-4" role="alert">
+                              {{message}}
+                            </div>
+                            {% endif %}
+
+                          {% endfor %}
+                        {% endif %}
+
                         <div class="m-0 w-100">
-                          <form action="" class="register-form">
+                          <form action="" method="post" class="register-form">
+                            {% csrf_token %}
                             <div class="mb-3">
                               <label for="exampleInputEmail1" class="form-label">Email</label>
-                              <input type="email" placeholder="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                              <input name="email_bottom" type="text" placeholder="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
+                            <div class="mb-3">
+                              <label for="exampleInputAge1" class="form-label">Username</label>
+                              <input name="username_bottom" type="text" placeholder="Username" class="form-control" id="exampleInputAge1" aria-describedby="Username">
                             </div>
                             <div class="mb-3">
                               <label for="exampleInputPass1" class="form-label">Password</label>
-                              <input type="email" placeholder="Email" class="form-control" id="exampleInputPass1" aria-describedby="passHelp">
+                              <input name="pass_bottom" type="password" placeholder="Password" class="form-control" id="exampleInputPass1" aria-describedby="passHelp">
                             </div>
-                            <div class="mb-3">
-                              <label for="exampleInputAge1" class="form-label">Age</label>
-                              <input type="email" placeholder="Email" class="form-control" id="exampleInputAge1" aria-describedby="ageHelp">
-                            </div>
-                            <div class="btn-register">Continue</div>
+                            <button type="submit" name="signupBottom" class="btn-register">Continue</button>
                           </form>
+
+
                           <h3 class="option-login text-center">Or</h3>
                           <button class="btn-fb bg-blue px-4 mb-2">
                             <div class="d-flex justify-content-between">
