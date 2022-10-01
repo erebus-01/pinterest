@@ -40,7 +40,7 @@
               </div>
               <!-- button trang chủ -->
               <div class="btn-pinterest">
-                <a href="" class="link-button">
+                <a href="/" class="link-button">
                   <div class="style-btn">
                     <div class="center-btn">
                       <span class="title-btn" style=" color: #111;">Trang chủ</span>
@@ -162,33 +162,15 @@
                     </div>
                   </div>
                 </div>
-                <div class="position-relative">
+                <a href="profile" class="position-relative">
                   <div class="d-block">
-                    <div class="w-100 icon-circle border-50">
-                      <div class="container-logo">
-                        <div class="position-relative">
-                          <svg
-                            width="100%"
-                            viewBox="-50 -50 100 100"
-                            version="1.1"
-                            preserveAspectRatio="xMidYMid meet"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <text
-                              font-size="40px"
-                              fill="#111"
-                              dy="0.35em"
-                              text-anchor="middle"
-                              class="dyH iFc H2s"
-                            >
-                              H
-                            </text>
-                          </svg>
-                        </div>
+                    <div class="w-100 icon-circle border-50 overflow-hidden">
+                      <div class="container-logo p-2">
+                          <img class="w-100 h-100 border-50" src="{{user_profile.profileimg.url}}" alt="">
                       </div>
                     </div>
                   </div>
-                </div>
+                </a>
                 <div class="position-relative">
                   <div class="d-block">
                     <div class="w-100 icon-circle border-50"  data-dismiss="modal" data-backdrop="false" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -213,16 +195,16 @@
                           <div class="modal-item hover-bg">
                             <div class="row-item">
                               <div class="item-content">
-                                <div class="icon-profile">
-                                  <svg width="100%" viewBox="-50 -50 100 100" version="1.1" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><text font-size="40px" fill="#111" dy="0.35em" text-anchor="middle" class="dyH iFc H2s ">H</text></svg>
+                                <div class="icon-profile border-50 overflow-hidden">
+                                  <img class="w-100 h-100" src="{{user_profile.profileimg.url}}" alt="">
                                 </div>
                                 <div class="info-profile">
-                                  <div class="info-name-top">Hiệp Phạm</div>
+                                  <div class="info-name-top">{{user.username}}</div>
                                   <div class="info-form">
                                     <div class="label-name">Cá nhân</div>
                                   </div>
                                   <div class="info-form">
-                                    <div class="label-name">googlle1811@gmail.com</div>
+                                    <div class="label-name">{{user.email}}</div>
                                   </div>
                                 </div>
                               </div>
@@ -258,7 +240,7 @@
                         <div class="padding-label">
                           <div class="label-modal">Tùy chọn khác</div>
                         </div>
-                        <div class="modal-list_item">
+                        <a href="settings" class="modal-list_item">
                           <div class="modal-item">
                             <div class="row-item">
                               <div class="item-content">
@@ -266,7 +248,7 @@
                               </div>
                             </div>
                           </div>
-                        </div>
+                        </a>
                         <div class="modal-list_item">
                           <div class="modal-item">
                             <div class="row-item">

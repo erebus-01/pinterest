@@ -36,7 +36,7 @@
             </div>
             <!-- button trang chủ -->
             <div class="btn-pinterest">
-              <a href="" class="link-button">
+              <a href="/" class="link-button">
                 <div class="style-btn">
                   <div class="center-btn">
                     <span class="title-btn" style=" color: #111;">Trang chủ</span>
@@ -119,22 +119,15 @@
                   </div>
                 </div>
               </div>
-              <div class="position-relative">
+              <a href="profile" class="position-relative">
                 <div class="d-block">
-                  <div class="w-100 icon-circle border-50">
-                    <div class="container-logo">
-                      <div class="position-relative">
-                        <svg width="100%" viewBox="-50 -50 100 100" version="1.1" preserveAspectRatio="xMidYMid meet"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <text font-size="40px" fill="#111" dy="0.35em" text-anchor="middle" class="dyH iFc H2s">
-                            H
-                          </text>
-                        </svg>
-                      </div>
+                  <div class="w-100 icon-circle border-50 overflow-hidden">
+                    <div class="container-logo p-2">
+                        <img class="w-100 h-100 border-50" src="{{user_profile.profileimg.url}}" alt="">
                     </div>
                   </div>
                 </div>
-              </div>
+              </a>
               <div class="position-relative">
                 <div class="d-block">
                   <div class="w-100 icon-circle border-50" data-dismiss="modal" data-backdrop="false"
@@ -166,19 +159,16 @@
                         <div class="modal-item hover-bg">
                           <div class="row-item">
                             <div class="item-content">
-                              <div class="icon-profile">
-                                <svg width="100%" viewBox="-50 -50 100 100" version="1.1"
-                                  preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><text
-                                    font-size="40px" fill="#111" dy="0.35em" text-anchor="middle"
-                                    class="dyH iFc H2s ">H</text></svg>
+                              <div class="icon-profile border-50 overflow-hidden">
+                                <img class="w-100 h-100" src="{{user_profile.profileimg.url}}" alt="">
                               </div>
                               <div class="info-profile">
-                                <div class="info-name-top">Hiệp Phạm</div>
+                                <div class="info-name-top">{{user.username}}</div>
                                 <div class="info-form">
                                   <div class="label-name">Cá nhân</div>
                                 </div>
                                 <div class="info-form">
-                                  <div class="label-name">googlle1811@gmail.com</div>
+                                  <div class="label-name">{{user.email}}</div>
                                 </div>
                               </div>
                             </div>
@@ -350,45 +340,45 @@
                       </div>
                     </div>
                     <div class="d-flex flex-column my-2 public-profile">
-                      <div class="mb-4">
-                        <label for="image" class="form-label">Ảnh</label>
-                        <div class="d-flex flex-row align-items-center">
-                          <div class="mx-1 width-img_profile">
-                            <img src="./SVG/blank-profile-picture2.png" alt="">
+                      <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-4">
+                          <label for="image" class="form-label">Ảnh</label>
+                          <div class="d-flex flex-row align-items-center">
+                            <div class="mx-1 width-img_profile">
+                              <img src="{{user_profile.profileimg.url}}" alt="">
+                            </div>
+                            <div class="ms-3">
+                              <input type="file" name="image" class="choose" id="file" />
+                              <label for="file" />Thay đổi</label>
+                            </div>
                           </div>
-                          <div class="ms-3">
-                            <button class="btn-red btn-gray btn-file" onclick="importData()" id="image">Thay đổi</button>
+                        </div>
+                        <div class="row mb-4">
+                          <div class="col">
+                            <label for="formGroupLastInput" class="form-label">Tên</label>
+                            <input type="text" name="fName_profile" value="{{user_profile.firstName}}" id="formGroupLastInput" class="form-control" placeholder="First name"
+                              aria-label="First name">
+                          </div>
+                          <div class="col">
+                            <label for="formGroupFirstInput" class="form-label">Họ</label>
+                            <input type="text" name="lName_profile" value="{{user_profile.lastName}}" id="formGroupFirstInput" class="form-control" placeholder="Last name"
+                              aria-label="Last name">
                           </div>
                         </div>
-                      </div>
-                      <div class="row mb-4">
-                        <div class="col">
-                          <label for="formGroupLastInput" class="form-label">Tên</label>
-                          <input type="text" id="formGroupLastInput" class="form-control" placeholder="First name"
-                            aria-label="First name">
+                        <label for="floatingTextarea2" class="form-label">Giới thiệu</label>
+                        <div class="form-floating mb-4">
+                          <textarea class="form-control" name="story_profile" placeholder="Kể câu chuyện của bạn" id="floatingTextarea2"
+                            style="height: 100px">{{user_profile.story}}</textarea>
+                          <label for="floatingTextarea2">Kể câu chuyện của bạn</label>
                         </div>
-                        <div class="col">
-                          <label for="formGroupFirstInput" class="form-label">Họ</label>
-                          <input type="text" id="formGroupFirstInput" class="form-control" placeholder="Last name"
-                            aria-label="Last name">
+                        <div class="mb-4">
+                          <label for="formGroupWebInput" class="form-label">Trang web</label>
+                          <input type="text" name="website_profile" value="{{user_profile.website}}" class="form-control" id="formGroupWebInput"
+                            placeholder="Thêm liên kết vào website của bạn">
                         </div>
-                      </div>
-                      <label for="floatingTextarea2" class="form-label">Giới thiệu</label>
-                      <div class="form-floating mb-4">
-                        <textarea class="form-control" placeholder="Kể câu chuyện của bạn" id="floatingTextarea2"
-                          style="height: 100px"></textarea>
-                        <label for="floatingTextarea2">Kể câu chuyện của bạn</label>
-                      </div>
-                      <div class="mb-4">
-                        <label for="formGroupWebInput" class="form-label">Trang web</label>
-                        <input type="text" class="form-control" id="formGroupWebInput"
-                          placeholder="Thêm liên kết vào website của bạn">
-                      </div>
-                      <div class="mb-4">
-                        <label for="formGroupUserInput" class="form-label">Người dùng</label>
-                        <input type="text" class="form-control" id="formGroupUserInput" placeholder="Tên người dùng">
-                      </div>
-                      <button class="btn-red">Lưu</button>
+                        <button type="submit" name="save_profile" class="btn-red">Lưu</button>
+                      </form>
                     </div>
                   </div>
                   <div class="tab-pane" id="nav-info" role="tabpanel" aria-labelledby="nav-info-tab">
@@ -810,19 +800,6 @@
   </div>
   </div>
   </div>
-  <script>
-    function importData() {
-      let input = document.createElement('input');
-      input.type = 'file';
-      input.onchange = _ => {
-        // you can use this method to get file and perform respective operations
-        let files = Array.from(input.files);
-        console.log(files);
-      };
-      input.click();
-
-    }
-  </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
     integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>

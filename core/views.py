@@ -3,16 +3,79 @@ from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Profile
+import os
 
 # Create your views here.
 @login_required(login_url='signup')
 def index(request):
-  return render(request, 'home.html')
-
+  if Profile.objects.filter(user = request.user).exists():
+    user_profile = Profile.objects.get(user = request.user)
+  else:
+    user_profile = 'None profile'
+  print(user_profile)
+  return render(request, 'home.html', {'user_profile': user_profile})
 
 @login_required(login_url='signup')
 def settings(request):
-  return render(request, 'settings.html')
+  # user_profile = Profile.objects.filter(user=request.user)
+  if Profile.objects.filter(user = request.user).exists():
+    user_profile = Profile.objects.get(user = request.user)
+  else:
+    user_profile = 'None profile'
+
+  if request.method == 'POST':
+    if request.FILES.get('image') == None:
+      image = user_profile.profileimg
+      firstName = request.POST['fName_profile']
+      lastName = request.POST['lName_profile']
+      story = request.POST['story_profile']
+      website = request.POST['website_profile']
+
+      user_profile.profileimg = image
+      user_profile.firstName = firstName
+      user_profile.lastName = lastName
+      user_profile.story = story
+      user_profile.website = website
+      user_profile.save()
+
+    if request.FILES.get('image') != None:
+      if(len(user_profile.profileimg) > 0 and str(user_profile.profileimg) != 'blank_profile.png'):
+        os.remove(user_profile.profileimg.path)
+      image = request.FILES.get('image')
+      firstName = request.POST['fName_profile']
+      lastName = request.POST['lName_profile']
+      story = request.POST['story_profile']
+      website = request.POST['website_profile']
+
+      user_profile.profileimg = image
+      user_profile.firstName = firstName
+      user_profile.lastName = lastName
+      user_profile.story = story
+      user_profile.website = website
+      user_profile.save()
+
+    return redirect('settings')
+  
+  return render(request, 'settings.html', {'user_profile': user_profile})
+
+@login_required(login_url='signup')
+def profile(request):
+  if Profile.objects.filter(user = request.user).exists():
+    user_profile = Profile.objects.get(user = request.user)
+  else:
+    user_profile = 'None profile'
+  print(user_profile)
+  return render(request, 'profile.html', {'user_profile': user_profile})
+
+@login_required(login_url='signup')
+def upload(request):
+  if Profile.objects.filter(user = request.user).exists():
+    user_profile = Profile.objects.get(user = request.user)
+  else:
+    user_profile = 'None profile'
+  return render(request, 'upload.html', {'user_profile': user_profile})
+
+
 
 def signup(request):
 
@@ -36,11 +99,14 @@ def signup(request):
         user = User.objects.create_user(email=email_bottom, username=username_bottom, password=pass_bottom)
         user.save()
 
+        user_login = User.objects.get(username=username_bottom)
+        auth.login(request, user_login)
+
         user_model = User.objects.get(username=username_bottom)
         new_profile = Profile.objects.create(user=user_model, id_user=user_model.id)
         new_profile.save()
         messages.success(request, "Account ready to login!!!")
-        return redirect('signup')
+        return redirect('settings')
 
 
   if 'signup_modal' in request.POST:
@@ -62,6 +128,9 @@ def signup(request):
       else:
         user = User.objects.create_user(email=email_signup, username=user_signup, password=pass_signup)
         user.save()
+        
+        user_login = User.objects.get(username=user_signup)
+        auth.login(request, user_login)
 
         user_model = User.objects.get(username=user_signup)
         new_profile = Profile.objects.create(user=user_model, id_user=user_model.id)
