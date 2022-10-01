@@ -20,8 +20,6 @@ document.querySelector('#upload_img').addEventListener('change', event => {
           document.querySelector('.add_pin_modal .pin_image').appendChild(new_image);
           document.querySelector('#upload_img_label').style.display = 'none';
 
-          console.log(new_image)
-
           modals_pin.style.display = 'block';
 
           if(new_image.getBoundingClientRect().width < new_image.parentElement.getBoundingClientRect().width || 
@@ -37,10 +35,9 @@ document.querySelector('#upload_img').addEventListener('change', event => {
       }
 
       reader.readAsDataURL(event.target.files[0]);
-
     }
   }
-  document.querySelector('#upload_img').value = '';
+  // document.querySelector('#upload_img').value = '';
 })
 
 document.querySelector('#trash_btn').addEventListener('click', event => {

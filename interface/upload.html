@@ -275,59 +275,64 @@
           <div class="position-relative">
             <div style="padding-top: 50px;">
               <div class="add_pin_modal position-relative">
-                <div class="add_pin_container">
-                  <div class="side" id="left_side">
-                    <div class="section1">
-                      <div class="pint_mock_icon_container">
-                        <svg class="gUZ R19 U9O kVc" height="16" width="16" viewBox="0 0 24 24" aria-hidden="true" aria-label="" role="img"><path d="M12 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3M3 9c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm18 0c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3z"></path></svg>
+                <form action="" method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div class="add_pin_container">
+                    <div class="side" id="left_side">
+                      <div class="section1">
+                        <div class="pint_mock_icon_container">
+                          <svg class="gUZ R19 U9O kVc" height="16" width="16" viewBox="0 0 24 24" aria-hidden="true" aria-label="" role="img"><path d="M12 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3M3 9c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm18 0c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3z"></path></svg>
+                        </div>
                       </div>
-                    </div>
-                    <div class="section2 position-relative">
-                      <label for="upload_img" id="upload_img_label">
-                        <div class="upload_img_container">
-                          <div id="dotter_border">
-                            <div class="pint_mock_icon_container">
-                              <svg style="fill: #767676;" height="24" width="24" viewBox="0 0 24 24" aria-label="Thêm hình ảnh hoặc video" role="img"><path d="M24 12c0-6.627-5.372-12-12-12C5.373 0 0 5.373 0 12s5.373 12 12 12c6.628 0 12-5.373 12-12zm-10.767 3.75a1.25 1.25 0 0 1-2.5 0v-3.948l-1.031 1.031a1.25 1.25 0 0 1-1.768-1.768L12 7l4.066 4.065a1.25 1.25 0 0 1-1.768 1.768l-1.065-1.065v3.982z"></path></svg>
+                      
+                      <!-- <input type="file" name="upload_image" id=""> -->
+                      <div class="section2 position-relative">
+                        <label for="upload_img" id="upload_img_label">
+                          <div class="upload_img_container">
+                            <div id="dotter_border">
+                              <div class="pint_mock_icon_container">
+                                <svg style="fill: #767676;" height="24" width="24" viewBox="0 0 24 24" aria-label="Thêm hình ảnh hoặc video" role="img"><path d="M24 12c0-6.627-5.372-12-12-12C5.373 0 0 5.373 0 12s5.373 12 12 12c6.628 0 12-5.373 12-12zm-10.767 3.75a1.25 1.25 0 0 1-2.5 0v-3.948l-1.031 1.031a1.25 1.25 0 0 1-1.768-1.768L12 7l4.066 4.065a1.25 1.25 0 0 1-1.768 1.768l-1.065-1.065v3.982z"></path></svg>
+                              </div>
+                              <div class="">Kéo và thả hoặc nhấp vào để tải lên</div>
                             </div>
-                            <div class="">Kéo và thả hoặc nhấp vào để tải lên</div>
+                            <div class="quality">Bạn nên sử dụng tập tin .jpg chất lượng cao có kích thước dưới 20MB</div>
                           </div>
-                          <div class="quality">Bạn nên sử dụng tập tin .jpg chất lượng cao có kích thước dưới 20MB</div>
-                        </div>
-                        <input type="file" accept="image/bmp,image/gif,image/jpeg,image/png,image/tiff,image/webp" name="upload_img" id="upload_img">
-                      </label>
-                      <div class="modals_pin">
-                        <div class="pin_image">
-
+                          <input name="upload_image" type="file" accept="image/bmp,image/gif,image/jpeg,image/png,image/tiff,image/webp" id="upload_img">
+                        </label>
+                        <div class="modals_pin">
+                          <div class="pin_image">
+  
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <button class="btn-trash position-absolute top-50 left-0" id="trash_btn">
-                      <svg class="gUZ R19 U9O kVc" height="18" width="18" viewBox="0 0 24 24" aria-hidden="true" aria-label="" role="img"><path d="M4.878 22.116A2 2 0 0 0 6.875 24h10.229a2 2 0 0 0 1.995-1.881L20 7H4l.88 15.116zM22 3.5A1.5 1.5 0 0 1 20.5 5h-17a1.5 1.5 0 0 1 0-3h6V1a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v1h6A1.5 1.5 0 0 1 22 3.5z"></path></svg>
-                    </button>
-                    <div class="section3">
-                      <div class="save_from_site">Save From Site</div>
-                    </div>
-                  </div>
-                  <div class="side position-relative" id="right_side">
-                    <div class="section1">
-                      <button class="btn-red">Save</button>
-                    </div>
-                    <div class="section2">
-                      <textarea type="text" placeholder="Tạo tiêu đề" maxlength="50" style="overflow:hidden;" name="" id="pin_title" class="new_pin_input textarea form-control"></textarea>
-                      <label for="pin_title" class="label_textarea mb-4">40 ký tự đầu tiên của bạn là nội dung thường xuất hiện trên bảng tin</label>
-                      <div class="mt-2 mb-5 w-100 d-flex align-items-stretch">
-                        <div class="d-flex justify-content-center align-items-center flex-row">
-                          <div class="img_author">
-                            <img src="{{user_profile.profileimg.url}}" alt="">
-                          </div>
-                          <div class="name_author ms-2">{{user_profile.firstName}} {{user_profile.lastName}}</div>
-                        </div>
+                      <button type="button" class="btn-trash position-absolute top-50 left-0" id="trash_btn">
+                        <svg class="gUZ R19 U9O kVc" height="18" width="18" viewBox="0 0 24 24" aria-hidden="true" aria-label="" role="img"><path d="M4.878 22.116A2 2 0 0 0 6.875 24h10.229a2 2 0 0 0 1.995-1.881L20 7H4l.88 15.116zM22 3.5A1.5 1.5 0 0 1 20.5 5h-17a1.5 1.5 0 0 1 0-3h6V1a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v1h6A1.5 1.5 0 0 1 22 3.5z"></path></svg>
+                      </button>
+                      <div class="section3">
+                        <div class="save_from_site">Save From Site</div>
                       </div>
-                      <input type="text" placeholder="Cho mọi người biết nội dung của ảnh của bạn" name="" id="pin_description" class="new_pin_input">
-                      <input type="text" placeholder="Thêm một liên kết đích" name="" id="pin_destination" class="new_pin_input position-absolute bottom-0">
+                    </div>
+                    <div class="side position-relative" id="right_side">
+                      <div class="section1">
+                        <button type="submit" class="btn-red">Save</button>
+                      </div>
+                      <div class="section2">
+                        <textarea type="text" placeholder="Tạo tiêu đề" maxlength="50" style="overflow:hidden;" name="pin_caption" id="pin_title" class="new_pin_input textarea form-control"></textarea>
+                        <label for="pin_title" class="label_textarea mb-4">40 ký tự đầu tiên của bạn là nội dung thường xuất hiện trên bảng tin</label>
+                        <div class="mt-2 mb-5 w-100 d-flex align-items-stretch">
+                          <div class="d-flex justify-content-center align-items-center flex-row">
+                            <div class="img_author">
+                              <img src="{{user_profile.profileimg.url}}" alt="">
+                            </div>
+                            <div class="name_author ms-2">{{user_profile.firstName}} {{user_profile.lastName}}</div>
+                          </div>
+                        </div>
+                        <input type="text" name="pin_description" placeholder="Cho mọi người biết nội dung của ảnh của bạn" name="" id="pin_description" class="new_pin_input">
+                        <input type="text" name="pin_link" placeholder="Thêm một liên kết đích" name="" id="pin_destination" class="new_pin_input position-absolute bottom-0">
+                      </div>
                     </div>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>
@@ -338,16 +343,7 @@
   </div>
   </div>
   <script>
-    function importData() {
-      let input = document.createElement('input');
-      input.type = 'file';
-      input.onchange = _ => {
-        // you can use this method to get file and perform respective operations
-        let files = Array.from(input.files);
-        console.log(files);
-      };
-      input.click();
-    }
+    
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
     integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
