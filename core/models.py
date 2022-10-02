@@ -21,6 +21,7 @@ class Profile(models.Model):
 class Post(models.Model):
   id = models.UUIDField(primary_key=True, default =uuid.uuid4)
   user = models.CharField(max_length=100)
+  user_image = models.ImageField(null=True)
   image = models.ImageField(upload_to='post_images')
   caption = models.TextField()
   description = models.TextField(blank=True)

@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Profile, Post
 import os
+import random
 
 # Create your views here.
 @login_required(login_url='signup')
@@ -12,8 +13,11 @@ def index(request):
     user_profile = Profile.objects.get(user = request.user)
   else:
     user_profile = 'None profile'
-  print(user_profile)
-  return render(request, 'home.html', {'user_profile': user_profile})
+  
+  posts = list(Post.objects.all().filter(isActive=True))
+  posts = random.sample(posts, len(posts))
+  print(Post.objects.all().filter(isActive=True))
+  return render(request, 'home.html', {'user_profile': user_profile, 'posts': posts})
 
 @login_required(login_url='signup')
 def settings(request):
@@ -73,18 +77,19 @@ def upload(request):
     user_profile = Profile.objects.get(user = request.user)
   else:
     user_profile = 'None profile'
-
+  print(user_profile.profileimg)
   if request.method == 'POST':
     user = request.user.username
+    user_image = user_profile.profileimg
     image = request.FILES.get('upload_image')
     caption = request.POST['pin_caption']
     description = request.POST['pin_description']
     link = request.POST['pin_link']
 
-    new_post = Post.objects.create(user=user, image=image, caption=caption, description=description, link=link)
+    new_post = Post.objects.create(user=user, user_image=user_image, image=image, caption=caption, description=description, link=link)
     new_post.save()
 
-    return redirect('/')
+    return redirect('/upload')
   return render(request, 'upload.html', {'user_profile': user_profile})
 
 
