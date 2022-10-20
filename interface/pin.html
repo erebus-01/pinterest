@@ -311,7 +311,7 @@
             <div class="w-100">
               <div class="position-relative">
                 <div class="padding-header">
-                  <div class="close-module" onclick="window.history.go(-1); return false;">
+                  <div class="close-module">
                     <div class="close-width">
                       <div class="width-detail_image">
                         <div class="mb-5">
@@ -321,7 +321,7 @@
                                 <div style="cursor: auto;">
                                   <div class="responsive">
                                     <div class="border-image">
-                                      <img src="https://i.pinimg.com/564x/64/df/6f/64df6f3edf619fb5c6a59d6ca55d454d.jpg" alt="">
+                                      <img src="{{post.image.url}}" alt="">
                                     </div>
                                     <div class="author-img">
                                       <div class="wrapper-author">
@@ -351,33 +351,33 @@
                                               <span class="upload">
                                                 Tải lên bởi 
                                                 <span class="name-author">
-                                                  <a href="" class="link-author">Ben haviv</a>
+                                                  <a href="" class="link-author">{{post.user}}</a>
                                                 </span>
                                               </span>
                                             </div>
                                             <div class="close-title">
-                                              <h1>Supreme Bugs Bunny 🐰</h1>
+                                              <h1>{{post.caption}}</h1>
                                             </div>
                                             <div class="description">
-                                              <span>It wasn't easy, but we narrowed all of this year's great releases down to a top ten. See if your favorites made the cut in our Journal post, and shop them all at Stadium Goods.</span>
+                                              <span>{{post.description}}</span>
                                             </div>
                                             <div class="min-mid_close">
                                               <div class="d-flex align-items-center flex-row">
                                                 <div class="flex-1">
                                                   <div class="d-flex flex-row align-items-center px-1">
                                                     <div class="avatar-author">
-                                                      <img src="https://i.pinimg.com/75x75_RS/d0/38/77/d03877a3aa04545154dc23e9d188ff46.jpg" alt="">
+                                                      <img src="{{post.user_image.url}}" alt="">
                                                     </div>
                                                     <div class="d-flex flex-column ms-2">
                                                       <div class="name-channel">
                                                         <a href="" class="link-channel">
                                                           <div class="name-width_channel title-img mb-0">
-                                                            Stadium Goods
+                                                            {{post.user}}
                                                           </div>
                                                         </a>
                                                       </div>
                                                       <div class="follower-count">
-                                                        <div class="counter name-profile">82,1k người theo dõi</div>
+                                                        <div class="counter name-profile">{{ user_followers }} người theo dõi</div>
                                                       </div>
                                                     </div>
                                                   </div>

@@ -5,7 +5,10 @@ urlpatterns = [
   path('', views.index, name='index'),
   path('settings', views.settings, name='settings'),
   path('upload', views.upload, name='upload'),
-  path('profile', views.profile, name='profile'),
+  path('follow', views.follow, name='follow'),
+  path('profile/<str:pk>', views.profile, name='profile'),
+  path('pin/<str:pk>', views.pin, name='pin'),
+  path('my_profile/<str:pk>', views.my_profile, name='my_profile'),
   path('pinterest', views.signup, name='signup'),
   path('pinterest', views.logout, name='logout'),
 ]

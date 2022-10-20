@@ -554,11 +554,15 @@ h6 {
 
 .grid-item {
   width: 236px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .profile-upload {
   z-index: 1;
+}
+
+.btn-download:hover{
+  color: #fff;
 }
 
 .img-item {
@@ -1435,26 +1439,14 @@ h6 {
   width: 2.5em;
 }
 
-.choose {
-  height: 0;
-  overflow: hidden;
-  width: 0;
+.picture_profile {
+  box-shadow: rgb(255 255 255) 0px 0px 0px 1px;
+  width: 120px;
+  height: 120px;
+  position: relative;
+  border-radius: 50%;
 }
 
-.choose + label {
-  border-radius: 20px;
-  min-width: 60px;
-  min-height: 40px;
-  color: #111;
-  font-size: 16px;
-  padding: 8px 12px;
-  font-weight: 500;
-  background-color: #e2e2e2;
-  border: none;
-  cursor: pointer;
-  display: inline-block;
-  outline: none;
-  position: relative;
-  transition: all 0.3s;
-  vertical-align: middle;
+.link-website:hover {
+  text-decoration: underline;
 }
