@@ -405,11 +405,12 @@
                     </div>
                   </div>
                   <div class="grid-container">
+                    {% for post in userPost %}
                     <div class="grid-item">
                       <div class="position-relative">
                         <div class="box-img">
                           <img
-                            src="https://i.pinimg.com/564x/5b/7b/9c/5b7b9c3eebf69b3a051d968550cb2cee.jpg"
+                            src="{{post.image.url}}"
                             class="img-item"
                             alt=""
                           />
@@ -459,175 +460,6 @@
                                         ></path>
                                       </svg>
                                     </button>
-
-                                    <!-- Modal -->
-                                    <div
-                                      class="modal"
-                                      style="cursor: zoom-out"
-                                      id="modalEdit"
-                                      tabindex="-1"
-                                      aria-labelledby="exampleModalLabel"
-                                      aria-hidden="true"
-                                    >
-                                      <div
-                                        class="modal-dialog modal-dialog-centered modal-xl"
-                                      >
-                                        <div
-                                          class="modal-content"
-                                          style="cursor: auto; margin: 0"
-                                        >
-                                          <div class="modal-header p-0">
-                                            <h3
-                                              class="modal-title edit_ghim"
-                                              id="exampleModalLabel"
-                                            >
-                                              Chỉnh sửa bài đăng này
-                                            </h3>
-                                          </div>
-                                          <div
-                                            class="modal-body pb-4 position-relative w-100 edit_body"
-                                          >
-                                            <div class="w-75">
-                                              <form action="" class="ps-4">
-                                                <div class="row mb-4">
-                                                  <label
-                                                    for="inputEmail3"
-                                                    class="col-sm-2 col-form-label"
-                                                    >Tiêu đề</label
-                                                  >
-                                                  <div class="col-sm-10">
-                                                    <textarea
-                                                      class="form-control text-large"
-                                                      style="overflow: hidden"
-                                                      maxlength="50"
-                                                      placeholder="Tạo tiêu đề"
-                                                      id="floatingTextarea2"
-                                                      style="height: 100px"
-                                                    ></textarea>
-                                                  </div>
-                                                </div>
-                                                <hr />
-                                                <div
-                                                  class="form-floating"
-                                                ></div>
-                                                <div class="row mb-4">
-                                                  <label
-                                                    for="inputContent"
-                                                    class="col-sm-2 col-form-label"
-                                                    >Nội dung</label
-                                                  >
-                                                  <div class="col-sm-10">
-                                                    <input
-                                                      type="text"
-                                                      class="form-control"
-                                                      id="inputContent"
-                                                    />
-                                                  </div>
-                                                </div>
-                                                <div class="row mb-4">
-                                                  <label
-                                                    for="inputLink"
-                                                    class="col-sm-2 col-form-label"
-                                                    >Liên kết</label
-                                                  >
-                                                  <div class="col-sm-10">
-                                                    <input
-                                                      type="text"
-                                                      class="form-control"
-                                                      id="inputLink"
-                                                    />
-                                                  </div>
-                                                </div>
-                                              </form>
-                                            </div>
-                                            <div class="w-25">
-                                              <div class="picture_edit px-4">
-                                                <img
-                                                  src="./SVG/1515e43c2544e6ea063cc731d3ae8e5c.jpg"
-                                                  alt=""
-                                                />
-                                              </div>
-                                            </div>
-                                          </div>
-                                          <div
-                                            class="modal-footer w-100 ft_edit"
-                                          >
-                                            <div class="d-flex flex-row">
-                                              <button
-                                                type="button"
-                                                class="btn-red btn-gray"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#modalDelete"
-                                              >
-                                                Xóa
-                                              </button>
-                                            </div>
-                                            <div class="d-flex flex-row">
-                                              <button
-                                                type="button"
-                                                class="btn-red btn-gray"
-                                                data-bs-dismiss="modal"
-                                              >
-                                                Hủy
-                                              </button>
-                                              <button
-                                                type="button"
-                                                class="btn-red ms-2"
-                                              >
-                                                Lưu
-                                              </button>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div
-                                      class="modal"
-                                      id="modalDelete"
-                                      tabindex="-1"
-                                      aria-labelledby="exampleModalLabel"
-                                      aria-hidden="true"
-                                    >
-                                      <div
-                                        class="modal-dialog modal-dialog-centered"
-                                      >
-                                        <div class="modal-content p-3">
-                                          <div class="modal-header pt-3">
-                                            <h4
-                                              class="modal-title"
-                                              id="exampleModalLabel"
-                                            >
-                                              Bạn có chắc không?
-                                            </h4>
-                                          </div>
-                                          <div
-                                            class="modal-body border-top py-3 pt-4"
-                                          >
-                                            <h6 class="text-center">
-                                              Ảnh sẽ biến mất trong mục đã đăng
-                                            </h6>
-                                            Bạn có thể hoàn tác một ảnh sau khi
-                                            đã xóa trong thùng rác!
-                                          </div>
-                                          <div class="modal-footer border-0 p-0">
-                                            <button
-                                              type="button"
-                                              class="btn-gray btn-red"
-                                              data-bs-toggle="modal"
-                                              data-bs-target="#modalEdit"
-                                            >
-                                              Hủy
-                                            </button>
-                                            <button
-                                              type="button"
-                                              class="btn-red"
-                                            >
-                                              Xóa
-                                            </button>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
                                   </div>
                                   <div class="center-btn ms-2">
                                     <button 
@@ -651,813 +483,240 @@
                                       </svg>
                                     </button>
                                   </div>
-                                  <div
-                                    class="modal"
-                                    id="modalHidden"
-                                    tabindex="-1"
-                                    aria-labelledby="exampleModalLabel"
-                                    aria-hidden="true"
-                                  >
-                                    <div
-                                      class="modal-dialog modal-dialog-centered"
-                                    >
-                                      <div class="modal-content p-3">
-                                        <div class="modal-header pt-3">
-                                          <h4
-                                            class="modal-title"
-                                            id="exampleModalLabel"
-                                          >
-                                            Bạn có chắc không?
-                                          </h4>
-                                        </div>
-                                        <div
-                                          class="modal-body border-top py-3 pt-4 text-center"
-                                        >
-                                          Bạn không thể nhìn thấy ảnh đã ẩn trong mục Ảnh đã đăng
-                                        </div>
-                                        <div class="modal-footer border-0 p-0">
-                                          <button
-                                            type="button"
-                                            class="btn-gray btn-red"
-                                            data-bs-toggle="modal"
-                                          >
-                                            Hủy
-                                          </button>
-                                          <button
-                                            type="button"
-                                            class="btn-red"
-                                          >
-                                            Ẩn
-                                          </button>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
                                 </div>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
+                      <!-- Modal -->
+                      <div
+                        class="modal"
+                        style="cursor: zoom-out"
+                        id="modalEdit"
+                        tabindex="-1"
+                        aria-labelledby="exampleModalLabel"
+                        aria-hidden="true"
+                      >
+                        <div
+                          class="modal-dialog modal-dialog-centered modal-xl"
+                        >
+                          <div
+                            class="modal-content"
+                            style="cursor: auto; margin: 0; z-index: 1;"
+                          >
+                            <div class="modal-header p-0">
+                              <h3
+                                class="modal-title edit_ghim"
+                                id="exampleModalLabel"
+                              >
+                                Chỉnh sửa bài đăng này
+                              </h3>
+                            </div>
+                            <div
+                              class="modal-body pb-4 position-relative w-100 edit_body"
+                            >
+                              <div class="w-75">
+                                <form action="" class="ps-4">
+                                  <div class="row mb-4">
+                                    <label
+                                      for="inputEmail3"
+                                      class="col-sm-2 col-form-label"
+                                      >Tiêu đề</label
+                                    >
+                                    <div class="col-sm-10">
+                                      <textarea
+                                        class="form-control text-large"
+                                        style="overflow: hidden"
+                                        maxlength="50"
+                                        placeholder="Tạo tiêu đề"
+                                        id="floatingTextarea2"
+                                        style="height: 100px"
+                                      ></textarea>
+                                    </div>
+                                  </div>
+                                  <hr />
+                                  <div
+                                    class="form-floating"
+                                  ></div>
+                                  <div class="row mb-4">
+                                    <label
+                                      for="inputContent"
+                                      class="col-sm-2 col-form-label"
+                                      >Nội dung</label
+                                    >
+                                    <div class="col-sm-10">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="inputContent"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="row mb-4">
+                                    <label
+                                      for="inputLink"
+                                      class="col-sm-2 col-form-label"
+                                      >Liên kết</label
+                                    >
+                                    <div class="col-sm-10">
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="inputLink"
+                                      />
+                                    </div>
+                                  </div>
+                                </form>
+                              </div>
+                              <div class="w-25">
+                                <div class="picture_edit px-4">
+                                  <img
+                                    src="{{post.image.url}}"
+                                    alt=""
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="modal-footer w-100 ft_edit"
+                            >
+                              <div class="d-flex flex-row">
+                                <button
+                                  type="button"
+                                  class="btn-red btn-gray"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#modalDelete"
+                                >
+                                  Xóa
+                                </button>
+                              </div>
+                              <div class="d-flex flex-row">
+                                <button
+                                  type="button"
+                                  class="btn-red btn-gray"
+                                  data-bs-dismiss="modal"
+                                >
+                                  Hủy
+                                </button>
+                                <button
+                                  type="button"
+                                  class="btn-red ms-2"
+                                >
+                                  Lưu
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="modal"
+                        id="modalDelete"
+                        tabindex="-1"
+                        aria-labelledby="exampleModalLabel"
+                        aria-hidden="true"
+                      >
+                        <div
+                          class="modal-dialog modal-dialog-centered"
+                        >
+                          <div class="modal-content p-3">
+                            <div class="modal-header pt-3">
+                              <h4
+                                class="modal-title"
+                                id="exampleModalLabel"
+                              >
+                                Bạn có chắc không?
+                              </h4>
+                            </div>
+                            <div
+                              class="modal-body border-top py-3 pt-4 text-center"
+                            >
+                              <h6 class="text-center">
+                                Ảnh sẽ biến mất trong mục đã đăng
+                              </h6>
+                              Bạn có thể hoàn tác một ảnh sau khi
+                              đã xóa trong thùng rác!
+                            </div>
+                            <div class="modal-footer border-0 p-0">
+                              <button
+                                type="button"
+                                class="btn-gray btn-red"
+                                data-bs-toggle="modal"
+                                data-bs-target="#modalEdit"
+                              >
+                                Hủy
+                              </button>
+                              <button
+                                type="button"
+                                class="btn-red"
+                              >
+                                Xóa
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                      class="modal"
+                      id="modalHidden"
+                      tabindex="-1"
+                      aria-labelledby="exampleModalLabel"
+                      aria-hidden="true"
+                    >
+                      <div
+                        class="modal-dialog modal-dialog-centered"
+                      >
+                        <div class="modal-content p-3">
+                          <div class="modal-header pt-3">
+                            <h4
+                              class="modal-title"
+                              id="exampleModalLabel"
+                            >
+                              Bạn có chắc không?
+                            </h4>
+                          </div>
+                          <div
+                            class="modal-body border-top py-3 pt-4 text-center"
+                          >
+                            Bạn không thể nhìn thấy ảnh đã ẩn trong mục Ảnh đã đăng
+                          </div>
+                          <div class="modal-footer border-0 p-0">
+                            <button
+                              type="button"
+                              class="btn-gray btn-red"
+                              data-bs-toggle="modal"
+                            >
+                              Hủy
+                            </button>
+                            <button
+                              type="button"
+                              class="btn-red"
+                            >
+                              Ẩn
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+
+                      <!-- Profile -->
                       <div class="profile-upload">
                         <h3 class="title-img text-limit">
-                          Dev Diaries | Linux (GNU) vs. Mac (BSD) Command Line
-                          Utility Differences
+                          {{post.caption}}
                         </h3>
                         <div class="information">
                           <img
-                            src="https://i.pinimg.com/75x75_RS/b7/7c/30/b77c30cafb10bd7c197c42488b09714d.jpg"
+                            src="{{post.user_image.url}}"
                             alt=""
                           />
                           <span class="name-profile text-limit"
-                            >Varun Dade | UIUX Design | Web Design | App Design
-                            | Saas Design</span
+                            >{{post.user}}</span
                           >
                         </div>
                       </div>
                     </div>
-                    <div class="grid-item">
-                      <div class="position-relative">
-                        <div class="box-img">
-                          <img
-                            src="https://i.pinimg.com/564x/e1/cc/a6/e1cca61375d677cbb4a78b675c65ac87.jpg"
-                            class="img-item"
-                            alt=""
-                          />
-                        </div>
-                      </div>
-                      <div class="profile-upload">
-                        <h3 class="title-img text-limit">
-                          Dev Diaries | Linux (GNU) vs. Mac (BSD) Command Line
-                          Utility Differences
-                        </h3>
-                        <div class="information">
-                          <img
-                            src="https://i.pinimg.com/75x75_RS/b7/7c/30/b77c30cafb10bd7c197c42488b09714d.jpg"
-                            alt=""
-                          />
-                          <span class="name-profile text-limit"
-                            >Varun Dade | UIUX Design | Web Design | App Design
-                            | Saas Design</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="grid-item">
-                      <img
-                        src="https://i.pinimg.com/564x/38/71/4d/38714d1be637f20155bb60e4addd8f7f.jpg"
-                        class="img-item"
-                        alt=""
-                      />
-                      <div class="profile-upload">
-                        <h3 class="title-img text-limit">
-                          Dev Diaries | Linux (GNU) vs. Mac (BSD) Command Line
-                          Utility Differences
-                        </h3>
-                        <div class="information">
-                          <img
-                            src="https://i.pinimg.com/75x75_RS/b7/7c/30/b77c30cafb10bd7c197c42488b09714d.jpg"
-                            alt=""
-                          />
-                          <span class="name-profile text-limit"
-                            >Varun Dade | UIUX Design | Web Design | App Design
-                            | Saas Design</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="grid-item">
-                      <img
-                        src="https://i.pinimg.com/564x/3e/06/34/3e0634f6079385191c902548435c50ea.jpg"
-                        class="img-item"
-                        alt=""
-                      />
-                      <div class="profile-upload">
-                        <h3 class="title-img text-limit">
-                          Dev Diaries | Linux (GNU) vs. Mac (BSD) Command Line
-                          Utility Differences
-                        </h3>
-                        <div class="information">
-                          <img
-                            src="https://i.pinimg.com/75x75_RS/b7/7c/30/b77c30cafb10bd7c197c42488b09714d.jpg"
-                            alt=""
-                          />
-                          <span class="name-profile text-limit"
-                            >Varun Dade | UIUX Design | Web Design | App Design
-                            | Saas Design</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="grid-item">
-                      <img
-                        src="https://i.pinimg.com/564x/72/8b/fa/728bfa030149a1f1539cc969a223967e.jpg"
-                        class="img-item"
-                        alt=""
-                      />
-                      <div class="profile-upload">
-                        <h3 class="title-img text-limit">
-                          Dev Diaries | Linux (GNU) vs. Mac (BSD) Command Line
-                          Utility Differences
-                        </h3>
-                        <div class="information">
-                          <img
-                            src="https://i.pinimg.com/75x75_RS/b7/7c/30/b77c30cafb10bd7c197c42488b09714d.jpg"
-                            alt=""
-                          />
-                          <span class="name-profile text-limit"
-                            >Varun Dade | UIUX Design | Web Design | App Design
-                            | Saas Design</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="grid-item">
-                      <img
-                        src="https://i.pinimg.com/564x/45/c8/d6/45c8d6710bb2193e97070c912e8d5c61.jpg"
-                        class="img-item"
-                        alt=""
-                      />
-                      <div class="profile-upload">
-                        <h3 class="title-img text-limit">
-                          Dev Diaries | Linux (GNU) vs. Mac (BSD) Command Line
-                          Utility Differences
-                        </h3>
-                        <div class="information">
-                          <img
-                            src="https://i.pinimg.com/75x75_RS/b7/7c/30/b77c30cafb10bd7c197c42488b09714d.jpg"
-                            alt=""
-                          />
-                          <span class="name-profile text-limit"
-                            >Varun Dade | UIUX Design | Web Design | App Design
-                            | Saas Design</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="grid-item">
-                      <img
-                        src="https://i.pinimg.com/564x/6b/b4/55/6bb4558dd68ff0f5f51fd74c481b0ab2.jpg"
-                        class="img-item"
-                        alt=""
-                      />
-                      <div class="profile-upload">
-                        <h3 class="title-img text-limit">
-                          Dev Diaries | Linux (GNU) vs. Mac (BSD) Command Line
-                          Utility Differences
-                        </h3>
-                        <div class="information">
-                          <img
-                            src="https://i.pinimg.com/75x75_RS/b7/7c/30/b77c30cafb10bd7c197c42488b09714d.jpg"
-                            alt=""
-                          />
-                          <span class="name-profile text-limit"
-                            >Varun Dade | UIUX Design | Web Design | App Design
-                            | Saas Design</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="grid-item">
-                      <img
-                        src="https://i.pinimg.com/564x/20/66/69/20666992dbfccf4af4fd3d27f5d1a17c.jpg"
-                        class="img-item"
-                        alt=""
-                      />
-                      <div class="profile-upload">
-                        <h3 class="title-img text-limit">
-                          Dev Diaries | Linux (GNU) vs. Mac (BSD) Command Line
-                          Utility Differences
-                        </h3>
-                        <div class="information">
-                          <img
-                            src="https://i.pinimg.com/75x75_RS/b7/7c/30/b77c30cafb10bd7c197c42488b09714d.jpg"
-                            alt=""
-                          />
-                          <span class="name-profile text-limit"
-                            >Varun Dade | UIUX Design | Web Design | App Design
-                            | Saas Design</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="grid-item">
-                      <img
-                        src="https://i.pinimg.com/564x/b7/4e/5b/b74e5b2eeab1a2ea0071016a6c0e910b.jpg"
-                        class="img-item"
-                        alt=""
-                      />
-                      <div class="profile-upload">
-                        <h3 class="title-img text-limit">
-                          Dev Diaries | Linux (GNU) vs. Mac (BSD) Command Line
-                          Utility Differences
-                        </h3>
-                        <div class="information">
-                          <img
-                            src="https://i.pinimg.com/75x75_RS/b7/7c/30/b77c30cafb10bd7c197c42488b09714d.jpg"
-                            alt=""
-                          />
-                          <span class="name-profile text-limit"
-                            >Varun Dade | UIUX Design | Web Design | App Design
-                            | Saas Design</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="grid-item">
-                      <img
-                        src="https://i.pinimg.com/564x/93/0f/21/930f213a6207b0ce8f4b4b38d857cc7b.jpg"
-                        class="img-item"
-                        alt=""
-                      />
-                      <div class="profile-upload">
-                        <h3 class="title-img text-limit">
-                          Dev Diaries | Linux (GNU) vs. Mac (BSD) Command Line
-                          Utility Differences
-                        </h3>
-                        <div class="information">
-                          <img
-                            src="https://i.pinimg.com/75x75_RS/b7/7c/30/b77c30cafb10bd7c197c42488b09714d.jpg"
-                            alt=""
-                          />
-                          <span class="name-profile text-limit"
-                            >Varun Dade | UIUX Design | Web Design | App Design
-                            | Saas Design</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="grid-item">
-                      <img
-                        src="https://i.pinimg.com/564x/0b/23/2d/0b232d8e8a3617b1aee67d255719351d.jpg"
-                        class="img-item"
-                        alt=""
-                      />
-                      <div class="profile-upload">
-                        <h3 class="title-img text-limit">
-                          Dev Diaries | Linux (GNU) vs. Mac (BSD) Command Line
-                          Utility Differences
-                        </h3>
-                        <div class="information">
-                          <img
-                            src="https://i.pinimg.com/75x75_RS/b7/7c/30/b77c30cafb10bd7c197c42488b09714d.jpg"
-                            alt=""
-                          />
-                          <span class="name-profile text-limit"
-                            >Varun Dade | UIUX Design | Web Design | App Design
-                            | Saas Design</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="grid-item">
-                      <img
-                        src="https://i.pinimg.com/564x/0b/3d/5a/0b3d5aac38258edafeebca49420b19d1.jpg"
-                        class="img-item"
-                        alt=""
-                      />
-                      <div class="profile-upload">
-                        <h3 class="title-img text-limit">
-                          Dev Diaries | Linux (GNU) vs. Mac (BSD) Command Line
-                          Utility Differences
-                        </h3>
-                        <div class="information">
-                          <img
-                            src="https://i.pinimg.com/75x75_RS/b7/7c/30/b77c30cafb10bd7c197c42488b09714d.jpg"
-                            alt=""
-                          />
-                          <span class="name-profile text-limit"
-                            >Varun Dade | UIUX Design | Web Design | App Design
-                            | Saas Design</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="grid-item">
-                      <img
-                        src="https://i.pinimg.com/564x/8c/00/fe/8c00fe86f7a599365479554e62f444f9.jpg"
-                        class="img-item"
-                        alt=""
-                      />
-                      <div class="profile-upload">
-                        <h3 class="title-img text-limit">
-                          Dev Diaries | Linux (GNU) vs. Mac (BSD) Command Line
-                          Utility Differences
-                        </h3>
-                        <div class="information">
-                          <img
-                            src="https://i.pinimg.com/75x75_RS/b7/7c/30/b77c30cafb10bd7c197c42488b09714d.jpg"
-                            alt=""
-                          />
-                          <span class="name-profile text-limit"
-                            >Varun Dade | UIUX Design | Web Design | App Design
-                            | Saas Design</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="grid-item">
-                      <img
-                        src="https://i.pinimg.com/564x/6a/d3/0d/6ad30d77ec6567a5ecf3aa8074ca9f04.jpg"
-                        class="img-item"
-                        alt=""
-                      />
-                      <div class="profile-upload">
-                        <h3 class="title-img text-limit">
-                          Dev Diaries | Linux (GNU) vs. Mac (BSD) Command Line
-                          Utility Differences
-                        </h3>
-                        <div class="information">
-                          <img
-                            src="https://i.pinimg.com/75x75_RS/b7/7c/30/b77c30cafb10bd7c197c42488b09714d.jpg"
-                            alt=""
-                          />
-                          <span class="name-profile text-limit"
-                            >Varun Dade | UIUX Design | Web Design | App Design
-                            | Saas Design</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="grid-item">
-                      <img
-                        src="https://i.pinimg.com/564x/16/60/07/1660072dc2192ee8ee8784343bc40f11.jpg"
-                        class="img-item"
-                        alt=""
-                      />
-                      <div class="profile-upload">
-                        <h3 class="title-img text-limit">
-                          Dev Diaries | Linux (GNU) vs. Mac (BSD) Command Line
-                          Utility Differences
-                        </h3>
-                        <div class="information">
-                          <img
-                            src="https://i.pinimg.com/75x75_RS/b7/7c/30/b77c30cafb10bd7c197c42488b09714d.jpg"
-                            alt=""
-                          />
-                          <span class="name-profile text-limit"
-                            >Varun Dade | UIUX Design | Web Design | App Design
-                            | Saas Design</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="grid-item">
-                      <img
-                        src="https://i.pinimg.com/564x/d7/82/fd/d782fd187627e512e9ccc9c7c99f67f8.jpg"
-                        class="img-item"
-                        alt=""
-                      />
-                      <div class="profile-upload">
-                        <h3 class="title-img text-limit">
-                          Dev Diaries | Linux (GNU) vs. Mac (BSD) Command Line
-                          Utility Differences
-                        </h3>
-                        <div class="information">
-                          <img
-                            src="https://i.pinimg.com/75x75_RS/b7/7c/30/b77c30cafb10bd7c197c42488b09714d.jpg"
-                            alt=""
-                          />
-                          <span class="name-profile text-limit"
-                            >Varun Dade | UIUX Design | Web Design | App Design
-                            | Saas Design</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="grid-item">
-                      <img
-                        src="https://i.pinimg.com/564x/7b/05/2e/7b052e82d09118c40829c5ec7724c88c.jpg"
-                        class="img-item"
-                        alt=""
-                      />
-                      <div class="profile-upload">
-                        <h3 class="title-img text-limit">
-                          Dev Diaries | Linux (GNU) vs. Mac (BSD) Command Line
-                          Utility Differences
-                        </h3>
-                        <div class="information">
-                          <img
-                            src="https://i.pinimg.com/75x75_RS/b7/7c/30/b77c30cafb10bd7c197c42488b09714d.jpg"
-                            alt=""
-                          />
-                          <span class="name-profile text-limit"
-                            >Varun Dade | UIUX Design | Web Design | App Design
-                            | Saas Design</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="grid-item">
-                      <div class="box-img">
-                        <img
-                          src="https://i.pinimg.com/564x/d4/07/62/d40762346904851ac5f651609d292b8a.jpg"
-                          class="img-item"
-                          alt=""
-                        />
-                      </div>
-                      <div class="profile-upload">
-                        <h3 class="title-img text-limit">
-                          Dev Diaries | Linux (GNU) vs. Mac (BSD) Command Line
-                          Utility Differences
-                        </h3>
-                        <div class="information">
-                          <img
-                            src="https://i.pinimg.com/75x75_RS/b7/7c/30/b77c30cafb10bd7c197c42488b09714d.jpg"
-                            alt=""
-                          />
-                          <span class="name-profile text-limit"
-                            >Varun Dade | UIUX Design | Web Design | App Design
-                            | Saas Design</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="grid-item">
-                      <img
-                        src="https://i.pinimg.com/564x/ca/63/b6/ca63b698748cfff38bed37c35d231f7a.jpg"
-                        class="img-item"
-                        alt=""
-                      />
-                      <div class="profile-upload">
-                        <h3 class="title-img text-limit">
-                          Dev Diaries | Linux (GNU) vs. Mac (BSD) Command Line
-                          Utility Differences
-                        </h3>
-                        <div class="information">
-                          <img
-                            src="https://i.pinimg.com/75x75_RS/b7/7c/30/b77c30cafb10bd7c197c42488b09714d.jpg"
-                            alt=""
-                          />
-                          <span class="name-profile text-limit"
-                            >Varun Dade | UIUX Design | Web Design | App Design
-                            | Saas Design</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="grid-item">
-                      <img
-                        src="https://i.pinimg.com/564x/ec/f1/13/ecf113e292ca16957c551155ed5f1302.jpg"
-                        class="img-item"
-                        alt=""
-                      />
-                      <div class="profile-upload">
-                        <h3 class="title-img text-limit">
-                          Dev Diaries | Linux (GNU) vs. Mac (BSD) Command Line
-                          Utility Differences
-                        </h3>
-                        <div class="information">
-                          <img
-                            src="https://i.pinimg.com/75x75_RS/b7/7c/30/b77c30cafb10bd7c197c42488b09714d.jpg"
-                            alt=""
-                          />
-                          <span class="name-profile text-limit"
-                            >Varun Dade | UIUX Design | Web Design | App Design
-                            | Saas Design</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="grid-item">
-                      <img
-                        src="https://i.pinimg.com/564x/23/c6/4d/23c64d3c0c2b425e3e930e05151fa447.jpg"
-                        class="img-item"
-                        alt=""
-                      />
-                      <div class="profile-upload">
-                        <h3 class="title-img text-limit">
-                          Dev Diaries | Linux (GNU) vs. Mac (BSD) Command Line
-                          Utility Differences
-                        </h3>
-                        <div class="information">
-                          <img
-                            src="https://i.pinimg.com/75x75_RS/b7/7c/30/b77c30cafb10bd7c197c42488b09714d.jpg"
-                            alt=""
-                          />
-                          <span class="name-profile text-limit"
-                            >Varun Dade | UIUX Design | Web Design | App Design
-                            | Saas Design</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="grid-item">
-                      <img
-                        src="https://i.pinimg.com/564x/e0/7d/79/e07d79769e4dc8f39fc25135e4967573.jpg"
-                        class="img-item"
-                        alt=""
-                      />
-                      <div class="profile-upload">
-                        <h3 class="title-img text-limit">
-                          Dev Diaries | Linux (GNU) vs. Mac (BSD) Command Line
-                          Utility Differences
-                        </h3>
-                        <div class="information">
-                          <img
-                            src="https://i.pinimg.com/75x75_RS/b7/7c/30/b77c30cafb10bd7c197c42488b09714d.jpg"
-                            alt=""
-                          />
-                          <span class="name-profile text-limit"
-                            >Varun Dade | UIUX Design | Web Design | App Design
-                            | Saas Design</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="grid-item">
-                      <img
-                        src="https://i.pinimg.com/564x/17/a7/92/17a792e13b7628c5af8bae4af5596924.jpg"
-                        class="img-item"
-                        alt=""
-                      />
-                      <div class="profile-upload">
-                        <h3 class="title-img text-limit">
-                          Dev Diaries | Linux (GNU) vs. Mac (BSD) Command Line
-                          Utility Differences
-                        </h3>
-                        <div class="information">
-                          <img
-                            src="https://i.pinimg.com/75x75_RS/b7/7c/30/b77c30cafb10bd7c197c42488b09714d.jpg"
-                            alt=""
-                          />
-                          <span class="name-profile text-limit"
-                            >Varun Dade | UIUX Design | Web Design | App Design
-                            | Saas Design</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="grid-item">
-                      <img
-                        src="https://i.pinimg.com/564x/50/2d/ed/502ded2ac65d64766535285482a5d88f.jpg"
-                        class="img-item"
-                        alt=""
-                      />
-                      <div class="profile-upload">
-                        <h3 class="title-img text-limit">
-                          Dev Diaries | Linux (GNU) vs. Mac (BSD) Command Line
-                          Utility Differences
-                        </h3>
-                        <div class="information">
-                          <img
-                            src="https://i.pinimg.com/75x75_RS/b7/7c/30/b77c30cafb10bd7c197c42488b09714d.jpg"
-                            alt=""
-                          />
-                          <span class="name-profile text-limit"
-                            >Varun Dade | UIUX Design | Web Design | App Design
-                            | Saas Design</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="grid-item">
-                      <img
-                        src="https://i.pinimg.com/564x/20/0a/ad/200aadabec1bdb51784d0bf42903d7ba.jpg"
-                        class="img-item"
-                        alt=""
-                      />
-                      <div class="profile-upload">
-                        <h3 class="title-img text-limit">
-                          Dev Diaries | Linux (GNU) vs. Mac (BSD) Command Line
-                          Utility Differences
-                        </h3>
-                        <div class="information">
-                          <img
-                            src="https://i.pinimg.com/75x75_RS/b7/7c/30/b77c30cafb10bd7c197c42488b09714d.jpg"
-                            alt=""
-                          />
-                          <span class="name-profile text-limit"
-                            >Varun Dade | UIUX Design | Web Design | App Design
-                            | Saas Design</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="grid-item">
-                      <img
-                        src="https://i.pinimg.com/750x/63/f9/36/63f9360bfcdcc29f6225f2130377c4f4.jpg"
-                        class="img-item"
-                        alt=""
-                      />
-                      <div class="profile-upload">
-                        <h3 class="title-img text-limit">
-                          Dev Diaries | Linux (GNU) vs. Mac (BSD) Command Line
-                          Utility Differences
-                        </h3>
-                        <div class="information">
-                          <img
-                            src="https://i.pinimg.com/75x75_RS/b7/7c/30/b77c30cafb10bd7c197c42488b09714d.jpg"
-                            alt=""
-                          />
-                          <span class="name-profile text-limit"
-                            >Varun Dade | UIUX Design | Web Design | App Design
-                            | Saas Design</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="grid-item">
-                      <img
-                        src="https://i.pinimg.com/564x/e0/3d/28/e03d2896c54b938a4a45a1df8c67750e.jpg"
-                        class="img-item"
-                        alt=""
-                      />
-                      <div class="profile-upload">
-                        <h3 class="title-img text-limit">
-                          Dev Diaries | Linux (GNU) vs. Mac (BSD) Command Line
-                          Utility Differences
-                        </h3>
-                        <div class="information">
-                          <img
-                            src="https://i.pinimg.com/75x75_RS/b7/7c/30/b77c30cafb10bd7c197c42488b09714d.jpg"
-                            alt=""
-                          />
-                          <span class="name-profile text-limit"
-                            >Varun Dade | UIUX Design | Web Design | App Design
-                            | Saas Design</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="grid-item">
-                      <img
-                        src="https://i.pinimg.com/564x/d3/9e/08/d39e08f0a50a56c461a103b8b487789d.jpg"
-                        class="img-item"
-                        alt=""
-                      />
-                      <div class="profile-upload">
-                        <h3 class="title-img text-limit">
-                          Dev Diaries | Linux (GNU) vs. Mac (BSD) Command Line
-                          Utility Differences
-                        </h3>
-                        <div class="information">
-                          <img
-                            src="https://i.pinimg.com/75x75_RS/b7/7c/30/b77c30cafb10bd7c197c42488b09714d.jpg"
-                            alt=""
-                          />
-                          <span class="name-profile text-limit"
-                            >Varun Dade | UIUX Design | Web Design | App Design
-                            | Saas Design</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="grid-item">
-                      <img
-                        src="https://i.pinimg.com/564x/a2/7f/90/a27f90ac1231e6dd372e2709635f4f42.jpg"
-                        class="img-item"
-                        alt=""
-                      />
-                      <div class="profile-upload">
-                        <h3 class="title-img text-limit">
-                          Dev Diaries | Linux (GNU) vs. Mac (BSD) Command Line
-                          Utility Differences
-                        </h3>
-                        <div class="information">
-                          <img
-                            src="https://i.pinimg.com/75x75_RS/b7/7c/30/b77c30cafb10bd7c197c42488b09714d.jpg"
-                            alt=""
-                          />
-                          <span class="name-profile text-limit"
-                            >Varun Dade | UIUX Design | Web Design | App Design
-                            | Saas Design</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="grid-item">
-                      <img
-                        src="https://i.pinimg.com/564x/55/02/3e/55023e9af18a0faf97ca0f5f127731f2.jpg"
-                        class="img-item"
-                        alt=""
-                      />
-                      <div class="profile-upload">
-                        <h3 class="title-img text-limit">
-                          Dev Diaries | Linux (GNU) vs. Mac (BSD) Command Line
-                          Utility Differences
-                        </h3>
-                        <div class="information">
-                          <img
-                            src="https://i.pinimg.com/75x75_RS/b7/7c/30/b77c30cafb10bd7c197c42488b09714d.jpg"
-                            alt=""
-                          />
-                          <span class="name-profile text-limit"
-                            >Varun Dade | UIUX Design | Web Design | App Design
-                            | Saas Design</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="grid-item">
-                      <img
-                        src="https://i.pinimg.com/564x/9b/7d/1b/9b7d1bfbf04bdee48ce814cc4a094734.jpg"
-                        class="img-item"
-                        alt=""
-                      />
-                      <div class="profile-upload">
-                        <h3 class="title-img text-limit">
-                          Dev Diaries | Linux (GNU) vs. Mac (BSD) Command Line
-                          Utility Differences
-                        </h3>
-                        <div class="information">
-                          <img
-                            src="https://i.pinimg.com/75x75_RS/b7/7c/30/b77c30cafb10bd7c197c42488b09714d.jpg"
-                            alt=""
-                          />
-                          <span class="name-profile text-limit"
-                            >Varun Dade | UIUX Design | Web Design | App Design
-                            | Saas Design</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="grid-item">
-                      <img
-                        src="https://i.pinimg.com/564x/f9/64/5b/f9645b864ea4c714c33ba9a6a6ad420f.jpg"
-                        class="img-item"
-                        alt=""
-                      />
-                      <div class="profile-upload">
-                        <h3 class="title-img text-limit">
-                          Dev Diaries | Linux (GNU) vs. Mac (BSD) Command Line
-                          Utility Differences
-                        </h3>
-                        <div class="information">
-                          <img
-                            src="https://i.pinimg.com/75x75_RS/b7/7c/30/b77c30cafb10bd7c197c42488b09714d.jpg"
-                            alt=""
-                          />
-                          <span class="name-profile text-limit"
-                            >Varun Dade | UIUX Design | Web Design | App Design
-                            | Saas Design</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="grid-item">
-                      <img
-                        src="https://i.pinimg.com/564x/08/ee/3f/08ee3fd7182545a2b9b27f3e21337c7e.jpg"
-                        class="img-item"
-                        alt=""
-                      />
-                      <div class="profile-upload">
-                        <h3 class="title-img text-limit">
-                          Dev Diaries | Linux (GNU) vs. Mac (BSD) Command Line
-                          Utility Differences
-                        </h3>
-                        <div class="information">
-                          <img
-                            src="https://i.pinimg.com/75x75_RS/b7/7c/30/b77c30cafb10bd7c197c42488b09714d.jpg"
-                            alt=""
-                          />
-                          <span class="name-profile text-limit"
-                            >Varun Dade | UIUX Design | Web Design | App Design
-                            | Saas Design</span
-                          >
-                        </div>
-                      </div>
-                    </div>
+                    {% endfor %}
                   </div>
                 </div>
               </div>

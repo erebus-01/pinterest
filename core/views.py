@@ -69,8 +69,21 @@ def my_profile(request, pk):
     user_profile = Profile.objects.get(user = request.user)
   else:
     user_profile = 'None profile'
+  
+  user_following = len(FollowersCount.objects.filter(follower=pk))
 
-  countActive = Post.objects.filter(user=pk, isActive=True, isHidden=False, isDelete=False).count()
+  countActive = 0;
+  countHidden = 0;
+  countDelete = 0;
+
+  if Post.objects.filter(user=pk, isActive=True, isHidden=False, isDelete=False).count() > 0:
+    countActive = Post.objects.filter(user=pk, isActive=True, isHidden=False, isDelete=False).count()
+
+  if Post.objects.filter(user=pk, isActive=False, isHidden=True, isDelete=False).count() > 0:
+    countHidden =Post.objects.filter(user=pk, isActive=False, isHidden=True, isDelete=False).count()
+
+  if Post.objects.filter(user=pk, isActive=False, isDelete=True).count() > 0:
+    countDelete = Post.objects.filter(user=pk, isActive=False, isDelete=True).count()
 
   post_last_1 = Post.objects.filter(user=pk, isActive=True, isHidden=False, isDelete=False).last()
   post_last_2 = Post.objects.filter(user=pk, isActive=True, isHidden=False, isDelete=False)[:1].get()
@@ -78,8 +91,6 @@ def my_profile(request, pk):
   post_last_4 = Post.objects.filter(user=pk, isActive=True, isHidden=False, isDelete=False)[randint(0, countActive - 1)]
   post_last_5 = Post.objects.filter(user=pk, isActive=True, isHidden=False, isDelete=False)[randint(0, countActive - 1)]
 
-
-  countHidden =Post.objects.filter(user=pk, isActive=False, isHidden=True, isDelete=False).count()
   hidden_last_1 = ''
   hidden_last_2 = ''
   hidden_last_3 = ''
@@ -93,7 +104,6 @@ def my_profile(request, pk):
     hidden_last_2 = Post.objects.filter(user=pk, isActive=False, isHidden=True, isDelete=False)[:1].get()
     hidden_last_3 = Post.objects.filter(user=pk, isActive=False, isHidden=True, isDelete=False).first()
 
-  countDelete = Post.objects.filter(user=pk, isActive=False, isDelete=True).count()
   delete_last_1 = ''
   delete_last_2 = ''
   delete_last_3 = ''
@@ -106,8 +116,6 @@ def my_profile(request, pk):
     delete_last_1 = Post.objects.filter(user=pk, isActive=False, isHidden=False, isDelete=True).last()
     delete_last_2 = Post.objects.filter(user=pk, isActive=False, isHidden=False, isDelete=True)[:1].get()
     delete_last_3 = Post.objects.filter(user=pk, isActive=False, isHidden=False, isDelete=True).first()
-
-  print('count hidden', countDelete)
 
   content = {
     'user_profile': user_profile,
@@ -125,6 +133,7 @@ def my_profile(request, pk):
     'delete_last_1': delete_last_1,
     'delete_last_2': delete_last_2,
     'delete_last_3': delete_last_3,
+    'user_following': user_following,
   }
 
   return render(request, 'profile.html', content)
@@ -158,17 +167,17 @@ def profile(request, pk):
   user_post_length = len(user_post)
 
   follower = request.user.username
-  user = pk.capitalize()
+  user = pk
 
-  print('follower'+follower +'user'+ user)
+  print('userUpper'+user)
 
   if FollowersCount.objects.filter(follower=follower, user=user).first():
     button_text = "Người đang theo dõi"
   else:
     button_text = "Theo dõi"
 
-  user_followers = len(FollowersCount.objects.filter(user=pk.capitalize()))
-  user_following = len(FollowersCount.objects.filter(follower=pk.capitalize()))
+  user_followers = len(FollowersCount.objects.filter(user=pk))
+  user_following = len(FollowersCount.objects.filter(follower=pk))
 
   context = {
     'user_profile': user_profile,
@@ -182,6 +191,23 @@ def profile(request, pk):
 
   return render(request, 'your_profile.html', context)
 
+@login_required(login_url='signup')
+def all (request, pk):
+  if Profile.objects.filter(user = request.user).exists():
+    user_profile = Profile.objects.get(user = request.user)
+  else:
+    user_profile = 'None profile'
+
+  userPost = Post.objects.all().filter(user=pk, isActive=True)
+
+  context = {
+    'userPost': userPost,
+    'user_profile': user_profile
+  }
+
+  return render(request, 'ghim.html', context)
+
+@login_required(login_url='signup')
 def pin(request, pk):
   post = get_object_or_404(Post, id=pk)
   user_followers = len(FollowersCount.objects.filter(user=post.user))
@@ -202,11 +228,11 @@ def follow(request):
     if FollowersCount.objects.filter(follower=follower,user=user).first():
       delete_follower = FollowersCount.objects.get(follower=follower,user=user)
       delete_follower.delete()
-      return redirect('/profile/'+user.lower())
+      return redirect('/profile/'+user)
     else:
       new_follower = FollowersCount.objects.create(follower=follower, user=user)
       new_follower.save()
-      return redirect('/profile/'+user.lower())
+      return redirect('/profile/'+user)
 
   else:
     return redirect('/')

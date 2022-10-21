@@ -245,7 +245,7 @@
                         <div class="padding-label">
                           <div class="label-modal">Tùy chọn khác</div>
                         </div>
-                        <a href="settings" class="modal-list_item">
+                        <a href="/settings" class="modal-list_item">
                           <div class="modal-item">
                             <div class="row-item">
                               <div class="item-content">
@@ -337,7 +337,7 @@
                         <div class="my-1 mx-0">
                           <div class="d-flex align-items-center flex-row m-0">
                             <div class="w-100">
-                              <span class="fl-count">2 người đang theo dõi</span>
+                              <span class="fl-count">{{user_following}} người đang theo dõi</span>
                             </div>
                           </div>
                         </div>
@@ -347,18 +347,18 @@
                               <button class="btn-red btn-gray" style="font-weight: 500;">Chia sẻ</button>
                             </div>
                             <div class="mx-1">
-                              <button class="btn-red btn-gray" style="font-weight: 500;">Chỉnh sửa hồ sơ</button>
+                              <a href="/settings" class="btn-red btn-gray" style="font-weight: 500;">Chỉnh sửa hồ sơ</a>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class="text-center span-dropdown">Da chia se</div>
+                  <div class="text-center span-dropdown">Đã chia sẻ</div>
                   <div class="my-3 mx-0">
                     <div class="d-flex justify-content-start flex-row flex-wrap">
                       <div class="h-100 p-2" style="width: 252px;">
-                        <a href="" class="rounded-lg">
+                        <a href="/all/{{user_profile.user}}" class="rounded-lg">
                           <div class="w-100 h-100">
                             <div class="w-100 d-flex flex-row">
                               <div class="w-100 position-relative">
@@ -484,14 +484,14 @@
                                     <div class="h-50">
                                       <div class="border-right-top w-100 h-100">
                                         <div class="w-100 h-100">
-                                          <div class="img-background" style="background-image: url('./SVG/869953e8f64a0955816856e0b55b7ef3.jpg');"></div>
+                                          <div class="img-background" style="background-image: url('{{delete_last_2.image.url}}');"></div>
                                         </div>
                                       </div>
                                     </div>
                                     <div class="h-50">
                                       <div class="border-right-bottom w-100 h-100">
                                         <div class="w-100 h-100">
-                                          <div class="img-background" style="background-image: url('./SVG/86f8f847700c81b63f64b14a290228a3.jpg');"></div>
+                                          <div class="img-background" style="background-image: url('{{delete_last_3.image.url}}');"></div>
                                         </div>
                                       </div>
                                     </div>

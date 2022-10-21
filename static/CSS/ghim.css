@@ -47,14 +47,18 @@
   flex-direction: row;
 }
 
-.content-save {
-  opacity: 1; 
-}
-
 .edit_content-right{
   box-sizing: border-box;
   overflow: hidden;
   min-height: 100% !important;
+}
+
+.content-save {
+  z-index: 1;
+}
+
+.modal {
+  z-index: 9999;
 }
 
 .picture_edit {
