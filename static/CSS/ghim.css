@@ -47,6 +47,33 @@
   flex-direction: row;
 }
 
+@media (max-width: 1080px) {
+  .edit_body {
+    flex-direction: column;
+  }
+  .edit-left, .edit-right {
+    width: 100% !important;
+  }
+  .form-input {
+    padding: 0 !important;
+    margin: 20px;
+  }
+  .edit-right {
+    display: grid;
+    place-items: center;
+  }
+  .edit-right .picture_edit{
+    width: 50%;
+  }
+  .modal-dialog {
+    transition: all 500ms ease-in-out;
+  }
+}
+
+.modal-dialog {
+  transition: all 500ms ease-in-out;
+}
+
 .edit_content-right{
   box-sizing: border-box;
   overflow: hidden;
@@ -71,7 +98,6 @@
 .edit_body img {
   width: 100%;
   border-radius: 8px;
-  height: 100%;
   max-width: 100%;
 }
 

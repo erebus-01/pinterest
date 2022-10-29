@@ -49,7 +49,9 @@
                 <a href="/" class="link-button">
                   <div class="style-btn">
                     <div class="center-btn">
-                      <span class="title-btn" style=" color: #111;">Trang chủ</span>
+                      <span class="title-btn" style="color: #111"
+                        >Trang chủ</span
+                      >
                     </div>
                   </div>
                 </a>
@@ -168,11 +170,15 @@
                     </div>
                   </div>
                 </div>
-                <a href="profile" class="position-relative">
+                <a href="/my_profile/{{user_profile.user}}" class="position-relative">
                   <div class="d-block">
                     <div class="w-100 icon-circle border-50 overflow-hidden">
                       <div class="container-logo p-2">
-                          <img class="w-100 h-100 border-50" src="{{user_profile.profileimg.url}}" alt="">
+                        <img
+                          class="w-100 h-100 border-50"
+                          src="{{user_profile.profileimg.url}}"
+                          alt=""
+                        />
                       </div>
                     </div>
                   </div>
@@ -226,18 +232,24 @@
                           <div class="modal-item hover-bg">
                             <div class="row-item">
                               <div class="item-content">
-                                <div class="icon-profile border-50 overflow-hidden">
-                                  <img class="w-100 h-100" src="{{user_profile.profileimg.url}}" alt="">
+                                <div
+                                  class="icon-profile border-50 overflow-hidden"
+                                >
+                                  <img
+                                    class="w-100 h-100"
+                                    src="{{user_profile.profileimg.url}}"
+                                    alt=""
+                                  />
                                 </div>
                                 <div class="info-profile">
-                                  <div class="info-name-top">{{user.username}}</div>
+                                  <div class="info-name-top">
+                                    {{user.username}}
+                                  </div>
                                   <div class="info-form">
                                     <div class="label-name">Cá nhân</div>
                                   </div>
                                   <div class="info-form">
-                                    <div class="label-name">
-                                      {{user.email}}
-                                    </div>
+                                    <div class="label-name">{{user.email}}</div>
                                   </div>
                                 </div>
                               </div>
@@ -274,7 +286,7 @@
                         <div class="padding-label">
                           <div class="label-modal">Tùy chọn khác</div>
                         </div>
-                        <a href="settings" class="modal-list_item">
+                        <a href="/settings" class="modal-list_item">
                           <div class="modal-item">
                             <div class="row-item">
                               <div class="item-content">
@@ -325,7 +337,7 @@
                             </div>
                           </div>
                         </div>
-                        <div class="modal-list_item">
+                        <a href="/pinterest" class="modal-list_item">
                           <div class="modal-item">
                             <div class="row-item">
                               <div class="item-content">
@@ -333,7 +345,7 @@
                               </div>
                             </div>
                           </div>
-                        </div>
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -380,10 +392,7 @@
                           </div>
                         </div>
                       </div>
-                      <a
-                        href="http://127.0.0.1:5500/upload.html"
-                        class="w-100 icon-circle border-50"
-                      >
+                      <a href="/upload" class="w-100 icon-circle border-50">
                         <div class="container-logo">
                           <div class="position-relative">
                             <svg
@@ -405,7 +414,7 @@
                     </div>
                   </div>
                   <div class="grid-container">
-                    {% for post in userPost %}
+                    {% block content %} {% for post in userPost %}
                     <div class="grid-item">
                       <div class="position-relative">
                         <div class="box-img">
@@ -425,26 +434,30 @@
                               <div
                                 class="position-absolute bottom-0 right-0 button-bottom d-flex justify-content-between"
                               >
-                                <button class="btn-link">
-                                  <svg
-                                    class=""
-                                    viewBox="0 0 24 24"
-                                    aria-label="liên kết"
-                                    role="img"
-                                  >
-                                    <path
-                                      d="M4.928 1a2.357 2.357 0 1 0 0 4.714h10.024L1.69 18.976a2.36 2.36 0 0 0 0 3.334 2.35 2.35 0 0 0 1.668.69c.603 0 1.206-.229 1.667-.69l13.26-13.263v10.024a2.358 2.358 0 1 0 4.715 0V1H4.928Z"
-                                    ></path>
-                                  </svg>
-                                  <span> etsy.com </span>
-                                </button>
+                                <div>
+                                  {% if post.link != '' %}
+                                  <button class="btn-link">
+                                    <svg
+                                      class=""
+                                      viewBox="0 0 24 24"
+                                      aria-label="liên kết"
+                                      role="img"
+                                    >
+                                      <path
+                                        d="M4.928 1a2.357 2.357 0 1 0 0 4.714h10.024L1.69 18.976a2.36 2.36 0 0 0 0 3.334 2.35 2.35 0 0 0 1.668.69c.603 0 1.206-.229 1.667-.69l13.26-13.263v10.024a2.358 2.358 0 1 0 4.715 0V1H4.928Z"
+                                      ></path>
+                                    </svg>
+                                    <span>{{post.link}}</span>
+                                  </button>
+                                  {% endif %}
+                              </div>
                                 <div class="group__icon-btn ms-2">
                                   <div class="center-btn">
                                     <button
                                       class="btn-icon"
                                       type="button"
                                       data-bs-toggle="modal"
-                                      data-bs-target="#modalEdit"
+                                      data-bs-target="#modalEdit{{post.pk}}"
                                     >
                                       <svg
                                         class="gUZ R19 U9O kVc"
@@ -462,11 +475,11 @@
                                     </button>
                                   </div>
                                   <div class="center-btn ms-2">
-                                    <button 
-                                      class="btn-icon" 
-                                      type="button" 
+                                    <button
+                                      class="btn-icon"
+                                      type="button"
                                       data-bs-toggle="modal"
-                                      data-bs-target="#modalHidden"
+                                      data-bs-target="#modalHidden{{post.pk}}"
                                     >
                                       <svg
                                         clip-rule="evenodd"
@@ -493,7 +506,7 @@
                       <div
                         class="modal"
                         style="cursor: zoom-out"
-                        id="modalEdit"
+                        id="modalEdit{{post.pk}}"
                         tabindex="-1"
                         aria-labelledby="exampleModalLabel"
                         aria-hidden="true"
@@ -503,7 +516,7 @@
                         >
                           <div
                             class="modal-content"
-                            style="cursor: auto; margin: 0; z-index: 1;"
+                            style="cursor: auto; margin: 0; z-index: 1"
                           >
                             <div class="modal-header p-0">
                               <h3
@@ -513,119 +526,81 @@
                                 Chỉnh sửa bài đăng này
                               </h3>
                             </div>
-                            <div
-                              class="modal-body pb-4 position-relative w-100 edit_body"
-                            >
-                              <div class="w-75">
-                                <form action="" class="ps-4">
-                                  <div class="row mb-4">
-                                    <label
-                                      for="inputEmail3"
-                                      class="col-sm-2 col-form-label"
-                                      >Tiêu đề</label
-                                    >
-                                    <div class="col-sm-10">
-                                      <textarea
-                                        class="form-control text-large"
-                                        style="overflow: hidden"
-                                        maxlength="50"
-                                        placeholder="Tạo tiêu đề"
-                                        id="floatingTextarea2"
-                                        style="height: 100px"
-                                      ></textarea>
+                            <form {% block Action%} action="/updatePost/{{post.id}}" {% endblock Action %} method="post" >
+                              {% csrf_token %}
+                              <div class="modal-body pb-4 position-relative w-100 edit_body">
+                                <div class="edit-left w-75">
+                                  <div class="form-input ps-4">
+                                    <div class="row mb-4">
+                                      <input type="hidden" class="form-control" id="inputContent" name="edit_id" value="{{post.id}}"/>
+                                      <input type="hidden" class="form-control" id="inputContent" name="user_input" value="{{post.user}}"/>
+                                      <label for="inputEmail3" class="col-sm-2 col-form-label" >Tiêu đề</label>
+                                      <div class="col-sm-10">
+                                        <textarea class="form-control text-large" style="overflow: hidden" name="edit_title" maxlength="50" placeholder="Tạo tiêu đề" id="floatingTextarea2" style="height: 100px" >{{post.caption}}</textarea>
+                                      </div>
+                                    </div>
+                                    <hr />
+                                    <div class="form-floating"></div>
+                                    <div class="row mb-4">
+                                      <label for="inputContent" class="col-sm-2 col-form-label" >Nội dung</label
+                                      >
+                                      <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inputContent" name="edit_description" value="{{post.description}}"/>
+                                      </div>
+                                    </div>
+                                    <div class="row mb-4">
+                                      <label for="inputLink" class="col-sm-2 col-form-label" >Liên kết</label>
+                                      <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inputLink" name="edit_link" value="{{post.link}}"/>
+                                      </div>
                                     </div>
                                   </div>
-                                  <hr />
-                                  <div
-                                    class="form-floating"
-                                  ></div>
-                                  <div class="row mb-4">
-                                    <label
-                                      for="inputContent"
-                                      class="col-sm-2 col-form-label"
-                                      >Nội dung</label
-                                    >
-                                    <div class="col-sm-10">
-                                      <input
-                                        type="text"
-                                        class="form-control"
-                                        id="inputContent"
-                                      />
-                                    </div>
+                                </div>
+                                <div class="edit-right w-25">
+                                  <div class="picture_edit px-4">
+                                    <img src="{{post.image.url}}" alt="" />
                                   </div>
-                                  <div class="row mb-4">
-                                    <label
-                                      for="inputLink"
-                                      class="col-sm-2 col-form-label"
-                                      >Liên kết</label
-                                    >
-                                    <div class="col-sm-10">
-                                      <input
-                                        type="text"
-                                        class="form-control"
-                                        id="inputLink"
-                                      />
-                                    </div>
-                                  </div>
-                                </form>
-                              </div>
-                              <div class="w-25">
-                                <div class="picture_edit px-4">
-                                  <img
-                                    src="{{post.image.url}}"
-                                    alt=""
-                                  />
                                 </div>
                               </div>
-                            </div>
-                            <div
-                              class="modal-footer w-100 ft_edit"
-                            >
-                              <div class="d-flex flex-row">
-                                <button
-                                  type="button"
-                                  class="btn-red btn-gray"
-                                  data-bs-toggle="modal"
-                                  data-bs-target="#modalDelete"
-                                >
-                                  Xóa
-                                </button>
+                              <div class="modal-footer w-100 ft_edit">
+                                <div class="d-flex flex-row">
+                                  <button
+                                    type="button"
+                                    class="btn-red btn-gray"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modalDelete{{post.pk}}"
+                                  >
+                                    Xóa
+                                  </button>
+                                </div>
+                                <div class="d-flex flex-row">
+                                  <button
+                                    type="button"
+                                    class="btn-red btn-gray"
+                                    data-bs-dismiss="modal"
+                                  >
+                                    Hủy
+                                  </button>
+                                  <button type="submit" name="updatePost" class="btn-red ms-2">
+                                    Lưu
+                                  </button>
+                                </div>
                               </div>
-                              <div class="d-flex flex-row">
-                                <button
-                                  type="button"
-                                  class="btn-red btn-gray"
-                                  data-bs-dismiss="modal"
-                                >
-                                  Hủy
-                                </button>
-                                <button
-                                  type="button"
-                                  class="btn-red ms-2"
-                                >
-                                  Lưu
-                                </button>
-                              </div>
-                            </div>
+                            </form>
                           </div>
                         </div>
                       </div>
                       <div
                         class="modal"
-                        id="modalDelete"
+                        id="modalDelete{{post.pk}}"
                         tabindex="-1"
                         aria-labelledby="exampleModalLabel"
                         aria-hidden="true"
                       >
-                        <div
-                          class="modal-dialog modal-dialog-centered"
-                        >
+                        <div class="modal-dialog modal-dialog-centered">
                           <div class="modal-content p-3">
                             <div class="modal-header pt-3">
-                              <h4
-                                class="modal-title"
-                                id="exampleModalLabel"
-                              >
+                              <h4 class="modal-title" id="exampleModalLabel">
                                 Bạn có chắc không?
                               </h4>
                             </div>
@@ -635,88 +610,73 @@
                               <h6 class="text-center">
                                 Ảnh sẽ biến mất trong mục đã đăng
                               </h6>
-                              Bạn có thể hoàn tác một ảnh sau khi
-                              đã xóa trong thùng rác!
+                              Bạn có thể hoàn tác một ảnh sau khi đã xóa trong
+                              thùng rác!
                             </div>
-                            <div class="modal-footer border-0 p-0">
-                              <button
-                                type="button"
-                                class="btn-gray btn-red"
-                                data-bs-toggle="modal"
-                                data-bs-target="#modalEdit"
-                              >
-                                Hủy
-                              </button>
-                              <button
-                                type="button"
-                                class="btn-red"
-                              >
-                                Xóa
-                              </button>
-                            </div>
+                            <form {% block ActionDelete %} action="/deletePost/{{post.id}}" {% endblock ActionDelete %} method="post">
+                              {% csrf_token %}
+                              <input type="hidden" class="form-control" id="inputContent" name="user_input" value="{{post.user}}"/>
+                              <div class="modal-footer border-0 p-0">
+                                <button
+                                  type="button"
+                                  class="btn-gray btn-red"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#modalEdit"
+                                >
+                                  Hủy
+                                </button>
+                                <button type="submit" name="deletePost" class="btn-red">Xóa</button>
+                              </div>
+                            </form>
                           </div>
                         </div>
                       </div>
                       <div
-                      class="modal"
-                      id="modalHidden"
-                      tabindex="-1"
-                      aria-labelledby="exampleModalLabel"
-                      aria-hidden="true"
-                    >
-                      <div
-                        class="modal-dialog modal-dialog-centered"
+                        class="modal"
+                        id="modalHidden{{post.pk}}"
+                        tabindex="-1"
+                        aria-labelledby="exampleModalLabel"
+                        aria-hidden="true"
                       >
-                        <div class="modal-content p-3">
-                          <div class="modal-header pt-3">
-                            <h4
-                              class="modal-title"
-                              id="exampleModalLabel"
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content p-3">
+                            <div class="modal-header pt-3">
+                              <h4 class="modal-title" id="exampleModalLabel">
+                                Bạn có chắc không?
+                              </h4>
+                            </div>
+                            <div
+                              class="modal-body border-top py-3 pt-4 text-center"
                             >
-                              Bạn có chắc không?
-                            </h4>
-                          </div>
-                          <div
-                            class="modal-body border-top py-3 pt-4 text-center"
-                          >
-                            Bạn không thể nhìn thấy ảnh đã ẩn trong mục Ảnh đã đăng
-                          </div>
-                          <div class="modal-footer border-0 p-0">
-                            <button
-                              type="button"
-                              class="btn-gray btn-red"
-                              data-bs-toggle="modal"
-                            >
-                              Hủy
-                            </button>
-                            <button
-                              type="button"
-                              class="btn-red"
-                            >
-                              Ẩn
-                            </button>
+                              Bạn không thể nhìn thấy ảnh đã ẩn trong mục Ảnh đã
+                              đăng
+                            </div>
+                            <form {% block ActionHidden %} action="/hiddenPost/{{post.id}}" {% endblock ActionHidden %} method="post">
+                              {% csrf_token %}
+                              <input type="hidden" class="form-control" id="inputContent" name="user_input" value="{{post.user}}"/>
+                              <div class="modal-footer border-0 p-0">
+                                <button type="button" class="btn-gray btn-red" data-bs-toggle="modal">
+                                  Hủy
+                                </button>
+                                <button type="submit" name="hiddenPost" class="btn-red">Ẩn</button>
+                              </div>
+                            </form>
                           </div>
                         </div>
-                      </div>
                       </div>
 
                       <!-- Profile -->
                       <div class="profile-upload">
-                        <h3 class="title-img text-limit">
-                          {{post.caption}}
-                        </h3>
+                        <h3 class="title-img text-limit">{{post.caption}}</h3>
                         <div class="information">
-                          <img
-                            src="{{post.user_image.url}}"
-                            alt=""
-                          />
+                          <img src="{{post.user_image.url}}" alt="" />
                           <span class="name-profile text-limit"
                             >{{post.user}}</span
                           >
                         </div>
                       </div>
                     </div>
-                    {% endfor %}
+                    {% endfor %} {% endblock content %}
                   </div>
                 </div>
               </div>

@@ -711,6 +711,7 @@ h6 {
 }
 
 .btn-link span{
+  margin-left: 10px;
   width: 7em;
   white-space: nowrap;
   overflow: hidden;

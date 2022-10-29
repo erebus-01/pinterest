@@ -3,6 +3,7 @@ from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Profile, Post, FollowersCount
+from .forms import PostForm
 import os
 import random
 from random import randint
@@ -85,11 +86,32 @@ def my_profile(request, pk):
   if Post.objects.filter(user=pk, isActive=False, isDelete=True).count() > 0:
     countDelete = Post.objects.filter(user=pk, isActive=False, isDelete=True).count()
 
-  post_last_1 = Post.objects.filter(user=pk, isActive=True, isHidden=False, isDelete=False).last()
-  post_last_2 = Post.objects.filter(user=pk, isActive=True, isHidden=False, isDelete=False)[:1].get()
-  post_last_3 = Post.objects.filter(user=pk, isActive=True, isHidden=False, isDelete=False).first()
-  post_last_4 = Post.objects.filter(user=pk, isActive=True, isHidden=False, isDelete=False)[randint(0, countActive - 1)]
-  post_last_5 = Post.objects.filter(user=pk, isActive=True, isHidden=False, isDelete=False)[randint(0, countActive - 1)]
+  post_last_1 = ''
+  post_last_2 = ''
+  post_last_3 = ''
+  post_last_4 = ''
+  post_last_5 = ''
+
+  if countActive >= 1:
+    post_last_1 = Post.objects.filter(user=pk, isActive=True, isHidden=False, isDelete=False).last()
+  if countActive >= 2:
+    post_last_1 = Post.objects.filter(user=pk, isActive=True, isHidden=False, isDelete=False).last()
+    post_last_2 = Post.objects.filter(user=pk, isActive=True, isHidden=False, isDelete=False)[randint(0, countActive - 1)]
+  if countActive >= 3:
+    post_last_1 = Post.objects.filter(user=pk, isActive=True, isHidden=False, isDelete=False).last()
+    post_last_2 = Post.objects.filter(user=pk, isActive=True, isHidden=False, isDelete=False)[randint(0, countActive - 1)]
+    post_last_3 = Post.objects.filter(user=pk, isActive=True, isHidden=False, isDelete=False).first()
+  if countActive >= 4:
+    post_last_1 = Post.objects.filter(user=pk, isActive=True, isHidden=False, isDelete=False).last()
+    post_last_2 = Post.objects.filter(user=pk, isActive=True, isHidden=False, isDelete=False)[randint(0, countActive - 1)]
+    post_last_3 = Post.objects.filter(user=pk, isActive=True, isHidden=False, isDelete=False).first()
+    post_last_4 = Post.objects.filter(user=pk, isActive=True, isHidden=False, isDelete=False)[randint(0, countActive - 1)]
+  if countActive >= 5:
+    post_last_1 = Post.objects.filter(user=pk, isActive=True, isHidden=False, isDelete=False).last()
+    post_last_2 = Post.objects.filter(user=pk, isActive=True, isHidden=False, isDelete=False)[randint(0, countActive - 1)]
+    post_last_3 = Post.objects.filter(user=pk, isActive=True, isHidden=False, isDelete=False).first()
+    post_last_4 = Post.objects.filter(user=pk, isActive=True, isHidden=False, isDelete=False)[randint(0, countActive - 1)]
+    post_last_5 = Post.objects.filter(user=pk, isActive=True, isHidden=False, isDelete=False)[randint(0, countActive - 1)]
 
   hidden_last_1 = ''
   hidden_last_2 = ''
@@ -98,11 +120,11 @@ def my_profile(request, pk):
     hidden_last_1 = Post.objects.filter(user=pk, isActive=False, isHidden=True, isDelete=False).last()
   if countHidden >= 2:
     hidden_last_1 = Post.objects.filter(user=pk, isActive=False, isHidden=True, isDelete=False).last()
-    hidden_last_2 = Post.objects.filter(user=pk, isActive=False, isHidden=True, isDelete=False).first()
+    hidden_last_2 = Post.objects.filter(user=pk, isActive=False, isHidden=True, isDelete=False)[randint(0, countHidden - 1)]
   if countHidden > 3:
     hidden_last_1 = Post.objects.filter(user=pk, isActive=False, isHidden=True, isDelete=False).last()
-    hidden_last_2 = Post.objects.filter(user=pk, isActive=False, isHidden=True, isDelete=False)[:1].get()
-    hidden_last_3 = Post.objects.filter(user=pk, isActive=False, isHidden=True, isDelete=False).first()
+    hidden_last_2 = Post.objects.filter(user=pk, isActive=False, isHidden=True, isDelete=False)[randint(0, countHidden - 1)]
+    hidden_last_3 = Post.objects.filter(user=pk, isActive=False, isHidden=True, isDelete=False)[randint(0, countHidden - 1)]
 
   delete_last_1 = ''
   delete_last_2 = ''
@@ -111,25 +133,25 @@ def my_profile(request, pk):
     delete_last_1 = Post.objects.filter(user=pk, isActive=False, isHidden=False, isDelete=True).last()
   if countDelete >= 2:
     delete_last_1 = Post.objects.filter(user=pk, isActive=False, isHidden=False, isDelete=True).last()
-    delete_last_2 = Post.objects.filter(user=pk, isActive=False, isHidden=False, isDelete=True).first()
+    delete_last_2 = Post.objects.filter(user=pk, isActive=False, isHidden=False, isDelete=True)[randint(0, countDelete - 1)]
   if countDelete > 3:
     delete_last_1 = Post.objects.filter(user=pk, isActive=False, isHidden=False, isDelete=True).last()
-    delete_last_2 = Post.objects.filter(user=pk, isActive=False, isHidden=False, isDelete=True)[:1].get()
-    delete_last_3 = Post.objects.filter(user=pk, isActive=False, isHidden=False, isDelete=True).first()
+    delete_last_2 = Post.objects.filter(user=pk, isActive=False, isHidden=False, isDelete=True)[randint(0, countDelete - 1)]
+    delete_last_3 = Post.objects.filter(user=pk, isActive=False, isHidden=False, isDelete=True)[randint(0, countDelete - 1)]
 
   content = {
     'user_profile': user_profile,
+    'countActive': countActive,
+    'countHidden': countHidden,
+    'countDelete': countDelete,
     'post_last_1': post_last_1,
     'post_last_2': post_last_2,
     'post_last_3': post_last_3,
     'post_last_4': post_last_4,
     'post_last_5': post_last_5,
-    'countActive': countActive,
     'hidden_last_1': hidden_last_1,
     'hidden_last_2': hidden_last_2,
     'hidden_last_3': hidden_last_3,
-    'countHidden': countHidden,
-    'countDelete': countDelete,
     'delete_last_1': delete_last_1,
     'delete_last_2': delete_last_2,
     'delete_last_3': delete_last_3,
@@ -192,13 +214,13 @@ def profile(request, pk):
   return render(request, 'your_profile.html', context)
 
 @login_required(login_url='signup')
-def all (request, pk):
+def all(request, pk):
   if Profile.objects.filter(user = request.user).exists():
     user_profile = Profile.objects.get(user = request.user)
   else:
     user_profile = 'None profile'
 
-  userPost = Post.objects.all().filter(user=pk, isActive=True)
+  userPost = Post.objects.all().filter(user=pk, isActive=True, isHidden=False, isDelete=False)
 
   context = {
     'userPost': userPost,
@@ -208,13 +230,122 @@ def all (request, pk):
   return render(request, 'ghim.html', context)
 
 @login_required(login_url='signup')
+def hidden(request, pk):
+  if Profile.objects.filter(user = request.user).exists():
+    user_profile = Profile.objects.get(user = request.user)
+  else:
+    user_profile = 'None profile'
+
+  userPost = Post.objects.all().filter(user=pk, isActive=False, isHidden=True, isDelete=False)
+
+  context = {
+    'userPost': userPost,
+    'user_profile': user_profile
+  }
+
+  return render(request, 'hidden.html', context)
+
+@login_required(login_url='signup')
+def delete(request, pk):
+  if Profile.objects.filter(user = request.user).exists():
+    user_profile = Profile.objects.get(user = request.user)
+  else:
+    user_profile = 'None profile'
+
+  userPost = Post.objects.all().filter(user=pk, isActive=False, isHidden=False, isDelete=True)
+
+  context = {
+    'userPost': userPost,
+    'user_profile': user_profile
+  }
+
+  return render(request, 'delete.html', context)
+
+@login_required(login_url='signup')
+def updatePost(request, pk):  
+  updatePost = Post.objects.get(id=pk)
+  user = request.POST['user_input']
+  if 'updatePost' in request.POST:
+    caption = request.POST['edit_title']
+    description = request.POST['edit_description']
+    link = request.POST['edit_link']
+    print("caption: %s, description: %s, link: %s" % (caption, description, link))
+    
+    updatePost.caption = caption
+    updatePost.description = description
+    updatePost.link = link
+    updatePost.save()
+    return redirect('/all/'+user)
+  else:
+    return redirect('/all/'+user)
+
+@login_required(login_url='signup')
+def deletePost(request, pk):
+  updatePost = Post.objects.get(id=pk)
+  user = request.POST['user_input']
+  if 'deletePost' in request.POST:
+    if updatePost.isDelete is False:
+      updatePost.isActive = False
+      updatePost.isHidden = False
+      updatePost.isDelete = True
+      updatePost.save()
+      return redirect('/all/'+user)
+
+  return redirect('/all/'+user)
+
+@login_required(login_url='signup')
+def deleteForever(request, pk):
+  updatePost = Post.objects.get(id=pk)
+  user = request.POST['user_input']
+  if 'deleteForever' in request.POST:
+    updatePost.delete()
+    return redirect('/all/'+user)
+  return redirect('/all/'+user)
+
+@login_required(login_url='signup')
+def hiddenPost(request, pk):
+  updatePost = Post.objects.get(id=pk)
+  user = request.POST['user_input']
+  if 'hiddenPost' in request.POST:
+    if updatePost.isHidden is False:
+      updatePost.isActive = False
+      updatePost.isHidden = True
+      updatePost.isDelete = False
+      updatePost.save()
+      return redirect('/all/'+user)
+
+  return redirect('/all/'+user)
+
+@login_required(login_url='signup')
+def activePost(request, pk):
+  updatePost = Post.objects.get(id=pk)
+  user = request.POST['user_input']
+  if 'activePost' in request.POST:
+    if updatePost.isActive is False:
+      updatePost.isActive = True
+      updatePost.isHidden = False
+      updatePost.isDelete = False
+      updatePost.save()
+      return redirect('/all/'+user)
+
+  return redirect('/all/'+user)
+
+@login_required(login_url='signup')
 def pin(request, pk):
   post = get_object_or_404(Post, id=pk)
+  if Profile.objects.filter(user = request.user).exists():
+    user_profile = Profile.objects.get(user = request.user)
+  else:
+    user_profile = 'None profile'
   user_followers = len(FollowersCount.objects.filter(user=post.user))
+
+  postActive = Post.objects.filter(user = post.user, isActive = True, isHidden = False, isDelete=False)
 
   context = {
     'post': post,
+    'postActive': postActive,
     'user_followers': user_followers,
+    'user_profile': user_profile,
   }
 
   return render(request, 'pin.html', context);
@@ -238,7 +369,6 @@ def follow(request):
     return redirect('/')
 
 def signup(request):
-
   if 'signupBottom' in request.POST:
     email_bottom = request.POST['email_bottom']
     username_bottom = request.POST['username_bottom']
@@ -314,17 +444,7 @@ def signup(request):
   else:
     return render(request, 'pinterest.html')
 
-
 @login_required(login_url='signup')
 def logout(request):
   auth.logout(request)
   return render(request, 'signup.html')
-
-  
-# @login_required(login_url='signup')
-# def upload(request):
-#   if Profile.objects.filter(user = request.user).exists():
-#     user_profile = Profile.objects.get(user = request.user)
-#   else:
-#     user_profile = 'None profile'
-#   return render(request, 'upload.html', {'user_profile': user_profile})
