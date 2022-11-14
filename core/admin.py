@@ -3,7 +3,7 @@ from .models import Profile, Post, FollowersCount
 
 class PostAdmin(admin.ModelAdmin):
   list_display = ['user', 'image', 'caption', 'description', 'link', 'isActive', 'isHidden', 'isDelete', 'created_at']
-  search_fields = ['user', 'caption', 'description', 'link', 'created_at']
+  search_fields = ['user', 'image', 'caption', 'description', 'link', 'created_at']
 class FollowersCountAdmin(admin.ModelAdmin):
   search_fields = ['user', 'follower']
 class ProfileAdmin(admin.ModelAdmin):
